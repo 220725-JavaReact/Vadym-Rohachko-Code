@@ -21,11 +21,11 @@ public class MenuLogin {
             } else if (userInput.equals("q")) {
                 exit = true;
                 login = null;
-            } else if (userInput.length() < 3) {
-                Helper.displayMessWrongInput();
+            } else if (!Helper.validateEmail(userInput)) {
+                Helper.displayMessWrongEmailFormat();
             } else {
-                login.set_login(userInput);
-                //leave here exit = false to pass to the next while loop
+                login.setLogin(userInput);
+                //use break and leave exit quale to "false" to pass to the next while loop
                 break;
             }
         }
@@ -43,7 +43,7 @@ public class MenuLogin {
             } else if (userInput.length() < 3) {
                 Helper.displayMessWrongInput();
             } else {
-                login.set_pass(userInput);
+                login.setPass(userInput);
                 exit = true;
             }
         }
