@@ -9,28 +9,25 @@ public class Login {
     private String _pass = "";
     private boolean _isRejected = false;
 
-    public String get_login() {
+    public String getLogin() {
         return _login;
     }
 
-    public void set_login(String login) {
+    public void setLogin(String login) {
         this._login = login;
     }
 
-    public String get_pass() {
+    public String getPass() {
         return _pass;
     }
 
-    public void set_pass(String pass) {
+    public void setPass(String pass) {
         this._pass = pass;
     }
 
-    public boolean is_isRejected() {
+    public boolean isRejected() {
         return _isRejected;
     }
 
-    public void set_isRejected(boolean isRejected) {
-        this._isRejected = isRejected;
-    }
 
 }
