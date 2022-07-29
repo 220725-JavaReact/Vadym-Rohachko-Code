@@ -22,6 +22,14 @@ public class Helper {
         return Pattern.compile(regex).matcher(email).matches();
     }
 
+    public static void displayMessMainMenu() {
+        System.out.println("Main Menu:");
+    }
+
+    public static void displayMessLogin() {
+        System.out.println("Registration successful! Please login.\n");
+    }
+
     public static void displayMessWrongEmailFormat() {
         System.out.println("Wrong Email format!\n");
     }
