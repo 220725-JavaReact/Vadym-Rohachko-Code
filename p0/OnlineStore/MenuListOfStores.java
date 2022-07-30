@@ -1,6 +1,5 @@
 package OnlineStore;
 
-import javax.print.DocFlavor;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -12,9 +11,13 @@ public class MenuListOfStores {
         int choice = 0;
 
         while (!exit) {
-            //Helper.displayMessGoToListOfStores();
-            Helper.displayMessListOfStores();
-            Helper.displayMenu(stores);
+
+            Message.listOfStores();
+            MenuHelper.displayMenu(stores);
+
+            Message.listOfStores();
+            MenuHelper.displayMenu(stores);
+
             userInput = scanner.nextLine();
 
             try {
@@ -29,7 +32,7 @@ public class MenuListOfStores {
                     System.out.printf("We have no store with ID %d. Try again...\n\n", choice);
                 }
             } catch (Exception e) {
-                Helper.displayMessWrongInputTryAgain();
+                Message.wrongInputTryAgain();
             }
         }
         return choice;

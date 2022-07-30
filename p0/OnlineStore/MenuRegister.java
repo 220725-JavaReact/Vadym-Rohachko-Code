@@ -13,16 +13,16 @@ public class MenuRegister {
 
         while (!exit) {
             //set user email
-            Helper.displayMessMoveToPrevMenu();
-            Helper.displayMessEnterLogin();
+            Message.moveToPrevMenu();
+            Message.enterLogin();
             userInput = scanner.nextLine();
             if (userInput.length() == 0) {
-                Helper.displayMessEmptyInput();
+                Message.emptyInput();
             } else if (userInput.equals("q")) {
                 exit = true;
                 register = null;
-            } else if (!Helper.validateEmail(userInput)) {
-                Helper.displayMessWrongEmailFormat();
+            } else if (!MenuHelper.validateEmail(userInput)) {
+                Message.wrongEmailFormat();
             } else {
                 register.setLogin(userInput);
                 //leave here exit = false to pass to the next while loop
@@ -32,16 +32,16 @@ public class MenuRegister {
 
         while (!exit) {
             //get user pass
-            Helper.displayMessMoveToPrevMenu();
-            Helper.displayMessEnterPass();
+            Message.moveToPrevMenu();
+            Message.enterPass();
             userInput = scanner.nextLine();
             if (userInput.length() == 0) {
-                Helper.displayMessEmptyInput();
+                Message.emptyInput();
             } else if (userInput.equals("q")) {
                 exit = true;
                 register = null;
             } else if (userInput.length() < 3) {
-                Helper.displayMessWrongInput();
+                Message.wrongInput();
             } else {
                 register.setPass(userInput);
                 break;
@@ -50,16 +50,16 @@ public class MenuRegister {
 
         while (!exit) {
             //set user surname
-            Helper.displayMessMoveToPrevMenu();
-            Helper.displayMessEnterSurname();
+            Message.moveToPrevMenu();
+            Message.enterSurname();
             userInput = scanner.nextLine();
             if (userInput.length() == 0) {
-                Helper.displayMessEmptyInput();
+                Message.emptyInput();
             } else if (userInput.equals("q")) {
                 exit = true;
                 register = null;
             } else if (userInput.length() < 3) {
-                Helper.displayMessWrongInput();
+                Message.wrongInput();
             } else {
                 register.setSurname(userInput);
                 break;
@@ -68,16 +68,16 @@ public class MenuRegister {
 
         while (!exit) {
             //set user name
-            Helper.displayMessMoveToPrevMenu();
-            Helper.displayMessEnterName();
+            Message.moveToPrevMenu();
+            Message.enterName();
             userInput = scanner.nextLine();
             if (userInput.length() == 0) {
-                Helper.displayMessEmptyInput();
+                Message.emptyInput();
             } else if (userInput.equals("q")) {
                 exit = true;
                 register = null;
                 } else if (userInput.length() < 3) {
-                    Helper.displayMessWrongInput();
+                    Message.wrongInput();
             } else {
                 register.setName(userInput);
                 break;
@@ -86,16 +86,16 @@ public class MenuRegister {
 
         while (!exit) {
             //set user address
-            Helper.displayMessMoveToPrevMenu();
-            Helper.displayMessEnterAddress();
+            Message.moveToPrevMenu();
+            Message.enterAddress();
             userInput = scanner.nextLine();
             if (userInput.length() == 0) {
-                Helper.displayMessEmptyInput();
+                Message.emptyInput();
             } else if (userInput.equals("q")) {
                 exit = true;
                 register = null;
             } else if (userInput.length() < 3) {
-                Helper.displayMessWrongInput();
+                Message.wrongInput();
             } else {
                 register.setAddress(userInput);
                 break;

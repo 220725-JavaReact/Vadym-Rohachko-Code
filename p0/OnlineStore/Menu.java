@@ -3,14 +3,10 @@ package OnlineStore;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map.Entry;
-import java.util.Set;
-
 public class Menu {
     public static void manageMenu() {
+
+        Message.welcomeToStore();
 
         HashMap<Integer, String> stores = new HashMap<Integer, String>();
         stores.put(11, "Fort Worth");
@@ -19,7 +15,6 @@ public class Menu {
         stores.put(14, "Allen");
         stores.put(15, "Prosper");
 
-        Helper.displayMessWelcomeToStore();
         Scanner scanner = new Scanner(System.in);
         String userInput = "";
         String[] welcomeScreenOptions = {"Login", "Register", "Exit App\n"};
@@ -28,7 +23,7 @@ public class Menu {
         boolean exit = false;
 
         while (!exit) {
-            Helper.displayMenu(welcomeScreenOptions);
+            MenuHelper.displayMenu(welcomeScreenOptions);
             userInput = scanner.nextLine();
 
             switch (userInput) {
@@ -42,8 +37,8 @@ public class Menu {
                         //IF LOGIN WAS SUCCESSFUL
                         //Main menu
                         while (!exit) {
-                            Helper.displayMessMainMenu();
-                            Helper.displayMenu(mainMenuShopOptions);
+                            Message.mainMenu();
+                            MenuHelper.displayMenu(mainMenuShopOptions);
                             userInput = scanner.nextLine();
                             switch (userInput) {
                                 //List of stores
@@ -72,11 +67,11 @@ public class Menu {
                                     System.out.println("Go to History\n");
                                     break;
                                 case "0":
-                                    Helper.displayMessWelcomeToStore();
+                                    Message.welcomeToStore();
                                     exit = true;
                                     break;
                                 default:
-                                    Helper.displayMessWrongInput();
+                                    Message.wrongInput();
                             }
                         }
                         exit = false;
@@ -88,15 +83,20 @@ public class Menu {
                     if (menuRegister.register() != null) {
                         //check here against BD? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         //arrange actions in case of failure and success!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                        Helper.displayMessRegisterSuccess();
-                        Helper.displayMessLogin();
+
+                        System.out.println("User has been registered! Returning to Main Menu...");
+                        Message.loginSuccess();
+
+                        Message.registerSuccess();
+                        Message.loginSuccess();
+
                     }
                     break;
                 case "0":
-                    Helper.displayMessGoodBy();
+                    Message.goodBy();
                     System.exit(0);
                 default:
-                    Helper.displayMessWrongInput();
+                    Message.wrongInput();
             }
         }// end login register menu
     }

@@ -13,16 +13,16 @@ public class MenuLogin {
 
         while (!exit) {
             //get user login
-            Helper.displayMessMoveToPrevMenu();
-            Helper.displayMessEnterLogin();
+            Message.moveToPrevMenu();
+            Message.enterLogin();
             userInput = scanner.nextLine();
             if (userInput.length() == 0) {
-                Helper.displayMessEmptyInput();
+                Message.emptyInput();
             } else if (userInput.equals("q")) {
                 exit = true;
                 login = null;
-            } else if (!Helper.validateEmail(userInput)) {
-                Helper.displayMessWrongEmailFormat();
+            } else if (!MenuHelper.validateEmail(userInput)) {
+                Message.wrongEmailFormat();
             } else {
                 login.setLogin(userInput);
                 //use break and leave exit quale to "false" to pass to the next while loop
@@ -32,22 +32,22 @@ public class MenuLogin {
 
         while (!exit) {
             //get user pass
-            Helper.displayMessMoveToPrevMenu();
-            Helper.displayMessEnterPass();
+            Message.moveToPrevMenu();
+            Message.enterPass();
             userInput = scanner.nextLine();
             if (userInput.length() == 0) {
-                Helper.displayMessEmptyInput();
+                Message.emptyInput();
             } else if (userInput.equals("q")) {
                 exit = true;
                 login = null;
             } else if (userInput.length() < 3) {
-                Helper.displayMessWrongInput();
+                Message.wrongInput();
             } else {
                 login.setPass(userInput);
                 exit = true;
             }
         }
-        //check here against BD?
+        //check here against BD? !!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (login == null) {}
 
         return login;
