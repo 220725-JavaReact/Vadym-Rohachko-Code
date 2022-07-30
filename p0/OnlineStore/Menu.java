@@ -43,18 +43,10 @@ public class Menu {
                                 //List of stores
                                 case "1":
                                     //get list of stores in HashMap format
-                                    int choiceOfStore = MenuListOfStores.manageMenuOfStores(stores);
-                                    switch (choiceOfStore) {
-                                        case 0:
-                                            exit = true;
-                                            break;
-                                        case -1:
-                                            Message.internalErrorTryAgain();
-                                            break;
-                                        default:
-                                            Store.displayStore(choiceOfStore);
+                                    String choiceOfStore = MenuListOfStores.manageMenuOfStores(stores);
+                                    if (!choiceOfStore.equals("q")) {
+                                        Store.displayStore(Integer.parseInt(choiceOfStore));
                                     }
-                                    exit = false;
                                     break;
                                 case "2":
                                     System.out.println("Go to Cart\n");

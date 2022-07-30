@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class MenuListOfStores {
-    public static int manageMenuOfStores(HashMap<Integer, String> stores) {
+    public static String manageMenuOfStores(HashMap<Integer, String> stores) {
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
         String userInput = "";
@@ -18,19 +18,21 @@ public class MenuListOfStores {
 
             try {
                 choice = Integer.parseInt(userInput);
-                if (stores.containsKey(choice)) {
+                if (stores.containsKey(choice) == true) {
                     //Return the ID of the store
-                    exit = true;
-                } else if (choice == 0) {
-                    //Exit menu (code 0)
-                    exit = true;
+                    return userInput;
                 } else {
                     System.out.printf("We have no store with ID %d. Try again...\n\n", choice);
                 }
             } catch (Exception e) {
-                Message.wrongInputTryAgain();
+                if (userInput.equals("q")) {
+                    //Exit menu (code "q")
+                    return userInput;
+                } else {
+                    Message.wrongInputTryAgain();
+                }
             }
         }
-        return choice;
+        return "";
     }
 }
