@@ -3,29 +3,19 @@ package OnlineStore;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map.Entry;
-import java.util.Set;
-
 public class Menu {
 
     public static void manageMenu() {
-        Helper.displayMessWelcomeToStore();
+        Message.welcomeToStore();
         Scanner scanner = new Scanner(System.in);
         String userInput = "";
-        String userChoice = "";
-        //String[] welcomeScreenOptions = {"[1] - Login ", "[2] - Register", "[0] - Exit App\n"};
         String[] welcomeScreenOptions = {"Login", "Register", "Exit App\n"};
-//        String[] mainMenuShopOptions = {"[1] - List of Stores ", "[2] - Cart",
-//                "[3] - Account", "[4] - History", "[0] - Exit Store\n"};
         String[] mainMenuShopOptions = {"List of Stores", "Cart",
                 "Account", "History", "Exit Store\n"};
         boolean exit = false;
 
         while (!exit) {
-            Helper.displayMenu(welcomeScreenOptions);
+            MenuHelper.displayMenu(welcomeScreenOptions);
             userInput = scanner.nextLine();
 
             switch (userInput) {
@@ -38,8 +28,8 @@ public class Menu {
                         System.out.println("Login and Pass are ok! Entering Main Menu...\n");
                         //IF LOGIN WAS SUCCESSFUL
                         while (!exit) {
-                            Helper.displayMessMainMenu();
-                            Helper.displayMenu(mainMenuShopOptions);
+                            Message.mainMenu();
+                            MenuHelper.displayMenu(mainMenuShopOptions);
                             userInput = scanner.nextLine();
                             switch (userInput) {
                                 //List of stores
@@ -75,11 +65,11 @@ public class Menu {
                                     System.out.println("Go to History\n");
                                     break;
                                 case "0":
-                                    Helper.displayMessWelcomeToStore();
+                                    Message.welcomeToStore();
                                     exit = true;
                                     break;
                                 default:
-                                    Helper.displayMessWrongInput();
+                                    Message.wrongInput();
                             }
                         }
                         exit = false;
@@ -92,14 +82,14 @@ public class Menu {
                         //check here against BD? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         //arrange actions in case of failure and success!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         System.out.println("User has been registered! Returning to Main Menu...");
-                        Helper.displayMessLogin();
+                        Message.loginSuccess();
                     }
                     break;
                 case "0":
-                    Helper.displayMessGoodBy();
+                    Message.goodBy();
                     System.exit(0);
                 default:
-                    Helper.displayMessWrongInput();
+                    Message.wrongInput();
             }
         }// end login register menu
     }

@@ -12,8 +12,8 @@ public class MenuListOfStores {
         int choice = 0;
 
         while (!exit) {
-            Helper.displayMessListOfStores();
-            Helper.displayMenu(stores);
+            Message.listOfStores();
+            MenuHelper.displayMenu(stores);
             userInput = scanner.nextLine();
 
             try {
