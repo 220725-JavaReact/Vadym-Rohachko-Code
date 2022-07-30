@@ -12,6 +12,7 @@ public class MenuListOfStores {
         int choice = 0;
 
         while (!exit) {
+            //Helper.displayMessGoToListOfStores();
             Helper.displayMessListOfStores();
             Helper.displayMenu(stores);
             userInput = scanner.nextLine();
@@ -28,7 +29,7 @@ public class MenuListOfStores {
                     System.out.printf("We have no store with ID %d. Try again...\n\n", choice);
                 }
             } catch (Exception e) {
-                System.out.println("Wrong input. Try again...\n");
+                Helper.displayMessWrongInputTryAgain();
             }
         }
         return choice;

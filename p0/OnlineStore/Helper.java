@@ -42,6 +42,9 @@ public class Helper {
         return Pattern.compile(regex).matcher(email).matches();
     }
 
+    public static  void displayMessGoToListOfStores(){
+        System.out.printf("Go to List of Stores\n");
+    }
     public static void displayMessChooseOption() {
         System.out.printf("Choose your option: ");
     }
@@ -113,6 +116,13 @@ public class Helper {
 
     public static void displayMessWrongInput() {
         System.out.println("Wrong input!\n");
+    }
+
+    public static void displayMessWrongInputTryAgain() {
+        System.out.println("Wrong input. Try again...\n");
+    }
+    public static void displayMessRegisterSuccess() {
+        System.out.println("User has been registered! Returning to Main Menu...");
     }
 
     public static void displayMessEmptyInput() {

@@ -10,16 +10,19 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class Menu {
-
     public static void manageMenu() {
+
+        HashMap<Integer, String> stores = new HashMap<Integer, String>();
+        stores.put(11, "Fort Worth");
+        stores.put(13, "Dallas");
+        stores.put(12, "McKinney");
+        stores.put(14, "Allen");
+        stores.put(15, "Prosper");
+
         Helper.displayMessWelcomeToStore();
         Scanner scanner = new Scanner(System.in);
         String userInput = "";
-        String userChoice = "";
-        //String[] welcomeScreenOptions = {"[1] - Login ", "[2] - Register", "[0] - Exit App\n"};
         String[] welcomeScreenOptions = {"Login", "Register", "Exit App\n"};
-//        String[] mainMenuShopOptions = {"[1] - List of Stores ", "[2] - Cart",
-//                "[3] - Account", "[4] - History", "[0] - Exit Store\n"};
         String[] mainMenuShopOptions = {"List of Stores", "Cart",
                 "Account", "History", "Exit Store\n"};
         boolean exit = false;
@@ -37,6 +40,7 @@ public class Menu {
                         //check here against BD? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         System.out.println("Login and Pass are ok! Entering Main Menu...\n");
                         //IF LOGIN WAS SUCCESSFUL
+                        //Main menu
                         while (!exit) {
                             Helper.displayMessMainMenu();
                             Helper.displayMenu(mainMenuShopOptions);
@@ -45,13 +49,6 @@ public class Menu {
                                 //List of stores
                                 case "1":
                                     //get list of stores in HashMap format
-                                    System.out.println("Go to List of Stores\n");
-                                    HashMap<Integer, String> stores = new HashMap<Integer, String>();
-                                    stores.put(11, "Fort Worth");
-                                    stores.put(13, "Dallas");
-                                    stores.put(12, "McKinney");
-                                    stores.put(14, "Allen");
-                                    stores.put(15, "Prosper");
                                     int choiceOfStore = MenuListOfStores.manageMenuOfStores(stores);
                                     switch (choiceOfStore) {
                                         case 0:
@@ -91,7 +88,7 @@ public class Menu {
                     if (menuRegister.register() != null) {
                         //check here against BD? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         //arrange actions in case of failure and success!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                        System.out.println("User has been registered! Returning to Main Menu...");
+                        Helper.displayMessRegisterSuccess();
                         Helper.displayMessLogin();
                     }
                     break;
