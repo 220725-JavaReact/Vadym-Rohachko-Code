@@ -4,9 +4,17 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Menu {
-
     public static void manageMenu() {
+
         Message.welcomeToStore();
+
+        HashMap<Integer, String> stores = new HashMap<Integer, String>();
+        stores.put(11, "Fort Worth");
+        stores.put(13, "Dallas");
+        stores.put(12, "McKinney");
+        stores.put(14, "Allen");
+        stores.put(15, "Prosper");
+
         Scanner scanner = new Scanner(System.in);
         String userInput = "";
         String[] welcomeScreenOptions = {"Login", "Register", "Exit App\n"};
@@ -27,6 +35,7 @@ public class Menu {
                         //check here against BD? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         System.out.println("Login and Pass are ok! Entering Main Menu...\n");
                         //IF LOGIN WAS SUCCESSFUL
+                        //Main menu
                         while (!exit) {
                             Message.mainMenu();
                             MenuHelper.displayMenu(mainMenuShopOptions);
@@ -35,13 +44,6 @@ public class Menu {
                                 //List of stores
                                 case "1":
                                     //get list of stores in HashMap format
-                                    System.out.println("Go to List of Stores\n");
-                                    HashMap<Integer, String> stores = new HashMap<Integer, String>();
-                                    stores.put(11, "Fort Worth");
-                                    stores.put(13, "Dallas");
-                                    stores.put(12, "McKinney");
-                                    stores.put(14, "Allen");
-                                    stores.put(15, "Prosper");
                                     int choiceOfStore = MenuListOfStores.manageMenuOfStores(stores);
                                     switch (choiceOfStore) {
                                         case 0:
@@ -81,8 +83,13 @@ public class Menu {
                     if (menuRegister.register() != null) {
                         //check here against BD? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         //arrange actions in case of failure and success!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
                         System.out.println("User has been registered! Returning to Main Menu...");
                         Message.loginSuccess();
+
+                        Message.registerSuccess();
+                        Message.loginSuccess();
+
                     }
                     break;
                 case "0":

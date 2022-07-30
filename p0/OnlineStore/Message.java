@@ -14,7 +14,7 @@ public class Message {
     public static void listOfStores() {
         System.out.println("List of Stores:");
     }
-    public static void ChooseStore() {
+    public static void chooseStore() {
         System.out.println("Choose Store:");
     }
     public static void mainMenu() {
@@ -24,7 +24,13 @@ public class Message {
     public static void loginSuccess() {
         System.out.println("Registration successful! Please login.\n");
     }
+    public static void registerSuccess() {
+        System.out.println("Registration successful! Please login.\n");
+    }
 
+    public static void  wrongInputTryAgain() {
+        System.out.println("Wrong input! Try again...\n");
+    }
     public static void wrongEmailFormat() {
         System.out.println("Wrong Email format!\n");
     }
