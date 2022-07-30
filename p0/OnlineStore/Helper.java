@@ -1,13 +1,33 @@
 package OnlineStore;
 
+import java.util.HashMap;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.ArrayList;
 
 public class Helper {
     public static void displayMenu(String[] menu) {
-        for (String item : menu) {
-            System.out.println(item);
+        for (int i = 0; i < menu.length ; i++){
+            if(i == menu.length - 1){
+                System.out.printf("[%d] - %s",0 , menu[i]);
+            } else {
+                System.out.printf("[%d] - %s\n",i + 1 , menu[i]);
+            }
         }
+        System.out.printf("Choose your option: ");
+    }
+
+    public static void displayMenu(HashMap menu) {
+        ArrayList<Integer> listOfKeys = new ArrayList<Integer>(menu.keySet());
+        for (int i = 0; i < listOfKeys.size() ; i++){
+//            if(i == listOfKeys.size() - 1){
+//                System.out.printf("[%d] - %s\n",0 , "Back to prev menu");
+//            } else {
+                System.out.printf("[%d] - %s\n",listOfKeys.get(i), menu.get(listOfKeys.get(i)));
+//            }
+        }
+        System.out.printf("[%d] - %s\n",0 , "Back to prev menu");
         System.out.printf("Choose your option: ");
     }
 
@@ -22,6 +42,15 @@ public class Helper {
         return Pattern.compile(regex).matcher(email).matches();
     }
 
+    public static void displayMessChooseOption() {
+        System.out.printf("Choose your option: ");
+    }
+    public static void displayMessListOfStores() {
+        System.out.println("List of Stores:");
+    }
+    public static void displayMessChooseStore() {
+        System.out.println("Choose Store:");
+    }
     public static void displayMessMainMenu() {
         System.out.println("Main Menu:");
     }
