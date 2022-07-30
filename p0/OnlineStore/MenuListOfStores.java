@@ -11,10 +11,6 @@ public class MenuListOfStores {
         int choice = 0;
 
         while (!exit) {
-
-            Message.listOfStores();
-            MenuHelper.displayMenu(stores);
-
             Message.listOfStores();
             MenuHelper.displayMenu(stores);
 

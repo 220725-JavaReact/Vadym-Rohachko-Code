@@ -6,8 +6,6 @@ import java.util.Scanner;
 public class Menu {
     public static void manageMenu() {
 
-        Message.welcomeToStore();
-
         HashMap<Integer, String> stores = new HashMap<Integer, String>();
         stores.put(11, "Fort Worth");
         stores.put(13, "Dallas");
@@ -23,6 +21,7 @@ public class Menu {
         boolean exit = false;
 
         while (!exit) {
+            Message.welcomeToStore();
             MenuHelper.displayMenu(welcomeScreenOptions);
             userInput = scanner.nextLine();
 
@@ -50,7 +49,7 @@ public class Menu {
                                             exit = true;
                                             break;
                                         case -1:
-                                            System.out.println("Internal error! Try again...");
+                                            Message.internalErrorTryAgain();
                                             break;
                                         default:
                                             Store.displayStore(choiceOfStore);
@@ -66,8 +65,7 @@ public class Menu {
                                 case "4":
                                     System.out.println("Go to History\n");
                                     break;
-                                case "0":
-                                    Message.welcomeToStore();
+                                case "q":
                                     exit = true;
                                     break;
                                 default:
@@ -92,7 +90,7 @@ public class Menu {
 
                     }
                     break;
-                case "0":
+                case "q":
                     Message.goodBy();
                     System.exit(0);
                 default:

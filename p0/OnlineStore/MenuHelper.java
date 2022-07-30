@@ -8,7 +8,7 @@ public class MenuHelper {
     public static void displayMenu(String[] menu) {
         for (int i = 0; i < menu.length; i++) {
             if (i == menu.length - 1) {
-                System.out.printf("[%d] - %s", 0, menu[i]);
+                System.out.printf("[%s] - %s", "q", menu[i]);
             } else {
                 System.out.printf("[%d] - %s\n", i + 1, menu[i]);
             }
@@ -21,7 +21,7 @@ public class MenuHelper {
         for (int i = 0; i < listOfKeys.size(); i++) {
             System.out.printf("[%d] - %s\n", listOfKeys.get(i), menu.get(listOfKeys.get(i)));
         }
-        System.out.printf("[%d] - %s\n", 0, "Back to prev menu");
+        System.out.printf("[%s] - %s\n", "q", "Back to prev menu");
         System.out.printf("Choose your option: ");
     }
 

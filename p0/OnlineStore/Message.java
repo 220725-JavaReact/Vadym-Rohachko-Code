@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 public class Message {
 
+    public static void internalErrorTryAgain() {
+        System.out.println("Internal error! Try again...");
+    }
     public static void chooseOption() {
         System.out.printf("Choose your option: ");
     }
@@ -92,7 +95,7 @@ public class Message {
     }
 
     public static void welcomeToStore() {
-        System.out.println("Welcome to our store!\n");
+        System.out.println("Welcome to our store!");
     }
 }
 
