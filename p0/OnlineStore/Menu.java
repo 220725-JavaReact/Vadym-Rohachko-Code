@@ -69,8 +69,8 @@ public class Menu {
                     break;
                 case "2":
                     //Register
-                    MenuRegister menuRegister = new MenuRegister();
-                    if (menuRegister.register() != null) {
+                    //MenuRegister menuRegister = new MenuRegister();
+                    if (MenuRegister.register() != null) {
                         //check here against BD? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         //arrange actions in case of failure and success!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

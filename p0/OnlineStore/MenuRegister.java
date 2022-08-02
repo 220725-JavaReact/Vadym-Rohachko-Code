@@ -3,10 +3,11 @@ package OnlineStore;
 import java.util.Scanner;
 
 public class MenuRegister {
-    Scanner scanner = new Scanner(System.in);
-    Register register = new Register();
 
-    public Register register() {
+    public static Register register() {
+
+        Scanner scanner = new Scanner(System.in);
+        Register register = new Register();
 
         boolean exit = false;
         String userInput = "";
@@ -76,8 +77,8 @@ public class MenuRegister {
             } else if (userInput.equals("q")) {
                 exit = true;
                 register = null;
-                } else if (userInput.length() < 3) {
-                    Message.wrongInput();
+            } else if (userInput.length() < 3) {
+                Message.wrongInput();
             } else {
                 register.setName(userInput);
                 break;
