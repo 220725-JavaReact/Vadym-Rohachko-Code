@@ -1,6 +1,7 @@
 package OnlineStore;
 
 import UI.*;
+import Util.Logger;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -14,6 +15,8 @@ public class OnlineStore {
         stores.put(12,"McKinney");
         stores.put(14,"Allen");
         stores.put(15,"Prosper");
+
+        Logger logger = Logger.getInstance();
 
         Scanner scanner = new Scanner(System.in);
         String userInput = "";
