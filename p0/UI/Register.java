@@ -1,4 +1,4 @@
-package OnlineStore;
+package UI;
 
 public class Register {
     private String _login = "";
