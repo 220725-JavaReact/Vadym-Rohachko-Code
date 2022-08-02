@@ -1,5 +1,7 @@
 package OnlineStore;
 
+import UI.*;
+
 import java.util.HashMap;
 import java.util.Scanner;
 

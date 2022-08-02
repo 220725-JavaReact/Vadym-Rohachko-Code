@@ -1,4 +1,4 @@
-package OnlineStore;
+package UI;
 
 import java.util.Scanner;
 

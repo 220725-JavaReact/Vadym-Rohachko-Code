@@ -1,4 +1,4 @@
-package OnlineStore;
+package UI;
 
 public class Store {
     public static void displayStore(Integer storeId){
