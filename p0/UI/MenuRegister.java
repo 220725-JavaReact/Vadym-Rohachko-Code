@@ -1,5 +1,8 @@
 package UI;
 
+import Util.Logger;
+import Util.Message;
+
 import java.util.Scanner;
 
 public class MenuRegister {
@@ -104,7 +107,9 @@ public class MenuRegister {
         }
 
         //check here against BD?
-        if (register == null) {
+        if (register != null) {
+            Logger logger = Logger.getInstance();
+            logger.log(Logger.LogLevel.info, "Login created");
         }
 
         return register;

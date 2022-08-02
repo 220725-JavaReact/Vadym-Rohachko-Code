@@ -2,6 +2,7 @@ package OnlineStore;
 
 import UI.*;
 import Util.Logger;
+import Util.Message;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -17,6 +18,7 @@ public class OnlineStore {
         stores.put(15,"Prosper");
 
         Logger logger = Logger.getInstance();
+        logger.log(Logger.LogLevel.info, "Program started");
 
         Scanner scanner = new Scanner(System.in);
         String userInput = "";
@@ -80,15 +82,12 @@ public class OnlineStore {
                         //arrange actions in case of failure and success!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
                         System.out.println("User has been registered! Returning to Main Menu...");
-                        Message.loginSuccess();
-
                         Message.registerSuccess();
-                        Message.loginSuccess();
-
                     }
                     break;
                 case "q":
                     Message.goodBy();
+                    logger.log(Logger.LogLevel.info, "Program stopped");
                     System.exit(0);
                 default:
                     Message.wrongInput();

@@ -1,6 +1,8 @@
 package UI;
 
 import java.util.Scanner;
+import Util.Logger;
+import Util.Message;
 
 public class MenuLogin {
     Scanner scanner = new Scanner(System.in);
@@ -48,7 +50,10 @@ public class MenuLogin {
             }
         }
         //check here against BD? !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if (login == null) {}
+        if (login != null) {
+            Logger logger = Logger.getInstance();
+            logger.log(Logger.LogLevel.info, "User logged in");
+        }
 
         return login;
     }
