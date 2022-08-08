@@ -5,65 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e200a912-cdd6-4376-9cd3-7aad9af3c030" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/p0/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p0/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p0/.idea/libraries/Maven__com_thoughtworks_qdox_qdox_2_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p0/.idea/libraries/Maven__commons_io_commons_io_2_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p0/.idea/libraries/Maven__org_apache_maven_plugins_maven_compiler_plugin_3_10_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p0/.idea/libraries/Maven__org_apache_maven_shared_maven_shared_incremental_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p0/.idea/libraries/Maven__org_apache_maven_shared_maven_shared_utils_3_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p0/.idea/libraries/Maven__org_codehaus_plexus_plexus_compiler_api_2_10_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p0/.idea/libraries/Maven__org_codehaus_plexus_plexus_compiler_javac_2_10_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p0/.idea/libraries/Maven__org_codehaus_plexus_plexus_compiler_manager_2_10_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p0/.idea/libraries/Maven__org_codehaus_plexus_plexus_component_annotations_1_5_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p0/.idea/libraries/Maven__org_codehaus_plexus_plexus_java_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p0/.idea/libraries/Maven__org_codehaus_plexus_plexus_utils_3_4_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p0/.idea/libraries/Maven__org_ow2_asm_asm_9_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/p0/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/p0/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/p0/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/p0/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/p0/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/p0/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vadym-Rohachko-Code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Vadym-Rohachko-Code.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p0/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/p0/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/.project" beforeDir="false" afterPath="$PROJECT_DIR$/p0/.project" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/OnlineStore.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/OnlineStore/OnlineStore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/UI/Login.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/UI/Menu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/UI/MenuHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/UI/MenuListOfStores.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/UI/MenuLogin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/UI/MenuMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/UI/MenuRegister.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/UI/Register.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/UI/Store.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/Util/Logger$LogLevel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/Util/Logger$Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/Util/Logger.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/Util/Message.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/onlinestore.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/OnlineStore/out/production/p0/p0.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/UI/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/p0/Main/UI/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/UI/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/p0/Main/UI/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/UI/MenuHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/p0/Main/UI/MenuHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/UI/MenuListOfStores.java" beforeDir="false" afterPath="$PROJECT_DIR$/p0/Main/UI/MenuListOfStores.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/UI/MenuLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/p0/Main/UI/MenuLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/UI/MenuMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/p0/Main/UI/MenuMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/UI/MenuRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/p0/Main/UI/MenuRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/UI/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/p0/Main/UI/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/UI/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/p0/Main/UI/Store.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/Util/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/p0/Main/Util/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/Util/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/p0/Main/Util/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p0/onlinestore.log" beforeDir="false" afterPath="$PROJECT_DIR$/p0/onlinestore.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,18 +38,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/java_my_repo/Vadym-Rohachko-Code/p0&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/java_my_repo/Vadym-Rohachko-Code",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\java_my_repo\Vadym-Rohachko-Code\p0\OnlineStore" />
