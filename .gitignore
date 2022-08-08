@@ -1,3 +1,11 @@
+.gitignore
+.settings
+.classpath
+.project
+pom.xml
+*.iml
+.idea/
+
 .idea/workspace.xml
 onlinestore.log
 target/
