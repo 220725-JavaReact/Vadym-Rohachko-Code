@@ -1,4 +1,9 @@
-.idea/workspace.xml
+.idea/
+.settings
+.classpath
+.project
+*.iml
+pom.xml
 onlinestore.log
 target/
 
