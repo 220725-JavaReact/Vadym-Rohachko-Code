@@ -5,7 +5,6 @@ import java.util.Scanner;
 import DAL.DaoPostgresql;
 import Util.*;
 import Models.*;
-
 public class Driver {
     public static void main(String[] args) {
         //Menu.manageMenu();
