@@ -2,7 +2,6 @@ import UI.*;
 
 import java.util.HashMap;
 import java.util.Scanner;
-
 import DAL.DaoPostgresql;
 import Util.*;
 import Models.*;
