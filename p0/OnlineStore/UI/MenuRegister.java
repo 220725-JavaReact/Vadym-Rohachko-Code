@@ -6,7 +6,7 @@ import Util.*;
 
 public class MenuRegister {
 
-    public static Register register() {
+    public Register register() {
 
         Scanner scanner = new Scanner(System.in);
         Register register = new Register();
@@ -52,24 +52,6 @@ public class MenuRegister {
         }
 
         while (!exit) {
-            //set user surname
-            Message.moveToPrevMenu();
-            Message.enterSurname();
-            userInput = scanner.nextLine();
-            if (userInput.length() == 0) {
-                Message.emptyInput();
-            } else if (userInput.equals("q")) {
-                exit = true;
-                register = null;
-            } else if (userInput.length() < 3) {
-                Message.wrongInput();
-            } else {
-                register.setSurname(userInput);
-                break;
-            }
-        }
-
-        while (!exit) {
             //set user name
             Message.moveToPrevMenu();
             Message.enterName();
@@ -88,9 +70,9 @@ public class MenuRegister {
         }
 
         while (!exit) {
-            //set user address
+            //set user surname
             Message.moveToPrevMenu();
-            Message.enterAddress();
+            Message.enterSurname();
             userInput = scanner.nextLine();
             if (userInput.length() == 0) {
                 Message.emptyInput();
@@ -100,10 +82,30 @@ public class MenuRegister {
             } else if (userInput.length() < 3) {
                 Message.wrongInput();
             } else {
-                register.setAddress(userInput);
+                register.setSurname(userInput);
                 break;
             }
         }
+
+
+
+//        while (!exit) {
+//            //set user address
+//            Message.moveToPrevMenu();
+//            Message.enterAddress();
+//            userInput = scanner.nextLine();
+//            if (userInput.length() == 0) {
+//                Message.emptyInput();
+//            } else if (userInput.equals("q")) {
+//                exit = true;
+//                register = null;
+//            } else if (userInput.length() < 3) {
+//                Message.wrongInput();
+//            } else {
+//                register.setAddress(userInput);
+//                break;
+//            }
+//        }
 
         //check here against BD?
         if (register != null) {

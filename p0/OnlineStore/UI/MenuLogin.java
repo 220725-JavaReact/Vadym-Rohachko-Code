@@ -5,10 +5,12 @@ import java.util.Scanner;
 import Util.*;
 
 public class MenuLogin {
-    Scanner scanner = new Scanner(System.in);
-    Login login = new Login();
+
 
     public Login getLogin() {
+
+        Scanner scanner = new Scanner(System.in);
+        Login login = new Login();
 
         boolean exit = false;
         String userInput = "";
@@ -49,7 +51,7 @@ public class MenuLogin {
                 exit = true;
             }
         }
-        //check here against BD? !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         if (login != null) {
             Logger logger = Logger.getInstance();
             logger.log(Logger.LogLevel.info, "User logged in");
