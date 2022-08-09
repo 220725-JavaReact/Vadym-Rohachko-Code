@@ -1,6 +1,6 @@
 package DAL;
 
-public interface DAO<T> {
+public interface IDao<T> {
 	void addInstance(T newInstance);
 	T getByName(String name);
 	T[] getAll();
