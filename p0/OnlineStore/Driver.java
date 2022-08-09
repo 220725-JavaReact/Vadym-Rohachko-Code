@@ -58,6 +58,8 @@ public class Driver {
                                     break;
                                 case "3":
                                     System.out.println("Go to Account\n");
+                                    UserModel user = new UserModel("ad", "asdf");
+                                    System.out.println(user.getEmail());
                                     break;
                                 case "4":
                                     System.out.println("Go to History\n");

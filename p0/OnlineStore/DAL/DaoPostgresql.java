@@ -9,7 +9,7 @@ import java.sql.Statement;
 import Util.ConnectionFactory;
 import Models.BLLManager;
 
-public class DaoPostgresql implements DAO<BLLManager> {
+public class DaoPostgresql implements IDao<BLLManager> {
 
 	@Override
 	public void addInstance(BLLManager newInstance) {
