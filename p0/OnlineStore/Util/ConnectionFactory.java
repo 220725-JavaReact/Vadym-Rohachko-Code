@@ -28,14 +28,14 @@ public class ConnectionFactory {
 	}
 	
 	public Connection getConnection() {
-		Connection connie = null;
+		Connection conn = null;
 		try {
-		connie = DriverManager.getConnection(SecretClass.url, SecretClass.userName, SecretClass.password);
-		return connie;
+		conn = DriverManager.getConnection(SecretClass.url, SecretClass.userName, SecretClass.password);
+		return conn;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return connie;
+		return conn;
 	}
 	
 }
