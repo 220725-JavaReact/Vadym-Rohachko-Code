@@ -28,6 +28,4 @@ public class Login {
     public boolean isRejected() {
         return isRejected;
     }
-
-
 }

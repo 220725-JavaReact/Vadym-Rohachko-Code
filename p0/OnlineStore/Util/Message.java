@@ -101,5 +101,6 @@ public class Message {
     public static void welcomeToStore() {
         System.out.println("Welcome to our store!");
     }
+
 }
 

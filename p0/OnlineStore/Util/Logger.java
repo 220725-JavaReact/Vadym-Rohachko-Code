@@ -3,7 +3,6 @@ package Util;
 import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 public class Logger {
     //Create the instance of Logger
     private static Logger single_instance_of_logger = null;

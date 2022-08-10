@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import Models.*;
 import Util.ConnectionFactory;
 
-
 public class DaoPostgresql implements IDao<User> {
     @Override
     public void addUser(User newInstance) {

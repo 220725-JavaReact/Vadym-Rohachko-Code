@@ -1,7 +1,6 @@
 package Models;
 
 public class User {
-
     private int user_id;
     private String lname;
     private String fname;

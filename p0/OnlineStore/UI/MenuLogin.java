@@ -6,7 +6,6 @@ import Util.*;
 
 public class MenuLogin {
 
-
     public Login getLogin() {
 
         Scanner scanner = new Scanner(System.in);

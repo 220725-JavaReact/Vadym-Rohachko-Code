@@ -10,4 +10,5 @@ public interface IDao<T> {
 //	T getByName(String name);
 //	T[] getAll();
 //	void updateInstance(T updateInstance);
+
 }

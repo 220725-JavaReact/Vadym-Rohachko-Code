@@ -13,7 +13,6 @@ public class Register {
     private String _addressState = "";
     private boolean _isRejected = false;
 
-
     public String getAddress() {
         return _address;
     }

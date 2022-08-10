@@ -69,6 +69,7 @@ public class MenuRegister {
             }
         }
 
+
         while (!exit) {
             //set user surname
             Message.moveToPrevMenu();
