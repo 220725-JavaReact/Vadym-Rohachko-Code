@@ -2,6 +2,7 @@ package UI;
 
 import java.util.Scanner;
 
+import Models.Register;
 import Util.*;
 
 public class MenuRegister {
@@ -88,6 +89,24 @@ public class MenuRegister {
             }
         }
 
+        while (!exit) {
+            //set user surname
+            Message.moveToPrevMenu();
+            //Message.enterSurname();
+            System.out.println("Enter card number:");
+            userInput = scanner.nextLine();
+            if (userInput.length() == 0) {
+                Message.emptyInput();
+            } else if (userInput.equals("q")) {
+                exit = true;
+                register = null;
+            } else if (userInput.length() != 16) {
+                Message.wrongInput();
+            } else {
+                register.setCardNumber(userInput);
+                break;
+            }
+        }
 
 
 //        while (!exit) {

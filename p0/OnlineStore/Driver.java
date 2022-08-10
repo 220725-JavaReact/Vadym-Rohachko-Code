@@ -2,20 +2,22 @@ import UI.*;
 
 import java.util.HashMap;
 import java.util.Scanner;
-import DAL.DaoPostgresql;
+
 import Util.*;
 import Models.*;
 
 public class Driver {
-    
+
     public static void main(String[] args) {
+
+
         //Menu.manageMenu();
         HashMap<Integer, String> stores = new HashMap<Integer, String>();
-        stores.put(11,"Fort Worth");
-        stores.put(13,"Dallas");
-        stores.put(12,"McKinney");
-        stores.put(14,"Allen");
-        stores.put(15,"Prosper");
+        stores.put(11, "Fort Worth");
+        stores.put(13, "Dallas");
+        stores.put(12, "McKinney");
+        stores.put(14, "Allen");
+        stores.put(15, "Prosper");
 
         Logger logger = Logger.getInstance();
         logger.log(Logger.LogLevel.info, "Program started");
@@ -36,12 +38,13 @@ public class Driver {
                 case "1":
                     //login
                     Login login = new MenuLogin().getLogin();
-                    if(login != null) {
+                    if (login != null) {
                         //IF LOGIN WAS SUCCESSFUL
                         String email = login.getLogin();
                         String pass = login.getPass();
-                        User user = BLLManager.processLogin(new User(email, pass), new DaoPostgresql());
-                        if (user != null) {
+//                        User user = BLLManagerImpl.processLogin(new User(email, pass), new DaoPostgresql());
+                        boolean isLoginSuccess = new BLLManagerImpl().processLogin(email, pass);
+                        if (isLoginSuccess) {
                             System.out.println("Login and Pass are ok! Entering Main Menu...\n");
                             //MAIN MENU
                             while (!exit) {
@@ -87,11 +90,17 @@ public class Driver {
                     Register register = new MenuRegister().register();
                     if (register != null) {
 
-                        boolean isRegistered = BLLManager.processRegister(
-                                new User(register.getLogin(),
-                                        register.getPass(),
-                                        register.getName(),
-                                        register.getSurname()), new DaoPostgresql());
+//                        boolean isRegistered = BLLManagerImpl.processRegister(
+//                                new User(register.getLogin(),
+//                                        register.getPass(),
+//                                        register.getName(),
+//                                        register.getSurname()), new DaoPostgresql());
+                        boolean isRegistered = new BLLManagerImpl().processRegister(
+                                register.getLogin(),
+                                register.getPass(),
+                                register.getName(),
+                                register.getSurname(),
+                                register.getCardNumber());
                         if (isRegistered) {
                             Message.registerSuccess();
                         } else {

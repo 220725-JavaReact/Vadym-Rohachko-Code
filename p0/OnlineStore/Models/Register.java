@@ -1,4 +1,4 @@
-package UI;
+package Models;
 
 public class Register {
     private String _login = "";
@@ -11,6 +11,22 @@ public class Register {
     private String _addressApartment = "";
     private String _addressCity = "";
     private String _addressState = "";
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        if(cardNumber.length() != 16){
+            //throw new IllegalArgumentException("");
+            this.cardNumber = "0000000000000000";
+        } else {
+            this.cardNumber = cardNumber;
+        }
+    }
+
+    private String cardNumber = "";
+
     private boolean _isRejected = false;
 
     public String getAddress() {

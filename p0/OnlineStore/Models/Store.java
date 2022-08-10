@@ -1,4 +1,4 @@
-package UI;
+package Models;
 
 public class Store {
     public static void displayStore(Integer storeId){
