@@ -3,6 +3,7 @@ package UI;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import Util.MenuHelper;
 import Util.Message;
 
 public class MenuListOfStores {

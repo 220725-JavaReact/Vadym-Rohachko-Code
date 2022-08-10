@@ -1,4 +1,4 @@
-package DAL;
+package Interfaces;
 
 import Models.User;
 

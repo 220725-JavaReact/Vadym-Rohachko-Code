@@ -1,4 +1,4 @@
-package UI;
+package Models;
 
 import java.util.HashMap;
 
