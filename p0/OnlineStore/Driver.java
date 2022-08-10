@@ -5,7 +5,9 @@ import java.util.Scanner;
 import DAL.DaoPostgresql;
 import Util.*;
 import Models.*;
+
 public class Driver {
+    
     public static void main(String[] args) {
         //Menu.manageMenu();
         HashMap<Integer, String> stores = new HashMap<Integer, String>();
@@ -33,58 +35,68 @@ public class Driver {
             switch (userInput) {
                 case "1":
                     //login
-                    MenuLogin menuLogin = new MenuLogin();
-                    //menuLogin.getLogin() returns the login object (email, pass, boolean/status)
-                    if (menuLogin.getLogin() != null) {
-                        //check here against BD? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                        System.out.println("Login and Pass are ok! Entering Main Menu...\n");
+                    Login login = new MenuLogin().getLogin();
+                    if(login != null) {
                         //IF LOGIN WAS SUCCESSFUL
-                        //Main menu
-                        while (!exit) {
-                            Message.mainMenu();
-                            MenuHelper.displayMenu(mainMenuShopOptions);
-                            userInput = scanner.nextLine();
-                            switch (userInput) {
-                                //List of stores
-                                case "1":
-                                    //get list of stores in HashMap format
-                                    String choiceOfStore = MenuListOfStores.manageMenuOfStores(stores);
-                                    if (!choiceOfStore.equals("q")) {
-                                        Store.displayStore(Integer.parseInt(choiceOfStore));
-                                    }
-                                    break;
-                                case "2":
-                                    System.out.println("Go to Cart\n");
-                                    break;
-                                case "3":
-                                    System.out.println("Go to Account\n");
-                                    UserModel user = new UserModel("ad", "asdf");
-                                    System.out.println(user.getEmail());
-                                    break;
-                                case "4":
-                                    System.out.println("Go to History\n");
-                                    DaoPostgresql daoPostgresql = new DaoPostgresql();
-                                    daoPostgresql.addInstance(new BLLManager());
-                                    break;
-                                case "q":
-                                    exit = true;
-                                    break;
-                                default:
-                                    Message.wrongInput();
+                        String email = login.getLogin();
+                        String pass = login.getPass();
+                        User user = BLLManager.processLogin(new User(email, pass), new DaoPostgresql());
+                        if (user != null) {
+                            System.out.println("Login and Pass are ok! Entering Main Menu...\n");
+                            //MAIN MENU
+                            while (!exit) {
+                                Message.mainMenu();
+                                MenuHelper.displayMenu(mainMenuShopOptions);
+                                userInput = scanner.nextLine();
+                                switch (userInput) {
+                                    //List of stores
+                                    case "1":
+                                        //Temporary get list of stores in HashMap format
+                                        String choiceOfStore = MenuListOfStores.manageMenuOfStores(stores);
+                                        if (!choiceOfStore.equals("q")) {
+                                            Store.displayStore(Integer.parseInt(choiceOfStore));
+                                        }
+                                        break;
+                                    case "2":
+                                        System.out.println("Go to Cart\n");
+                                        break;
+                                    case "3":
+                                        System.out.println("Go to Account\n");
+                                        break;
+                                    case "4":
+                                        System.out.println("Go to History\n");
+//                                    DaoPostgresql daoPostgresql = new DaoPostgresql();
+//                                    daoPostgresql.addInstance(new BLLManager());
+                                        break;
+                                    case "q":
+                                        exit = true;
+                                        break;
+                                    default:
+                                        Message.wrongInput();
+                                }
                             }
+                            exit = false;
+                        } else {
+                            System.out.println("Wrong login and/or password! Enter again, please...\n");
                         }
-                        exit = false;
                     }
+
                     break;
                 case "2":
                     //Register
-                    //MenuRegister menuRegister = new MenuRegister();
-                    if (MenuRegister.register() != null) {
-                        //check here against BD? !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                        //arrange actions in case of failure and success!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    Register register = new MenuRegister().register();
+                    if (register != null) {
 
-                        System.out.println("User has been registered! Returning to Main Menu...");
-                        Message.registerSuccess();
+                        boolean isRegistered = BLLManager.processRegister(
+                                new User(register.getLogin(),
+                                        register.getPass(),
+                                        register.getName(),
+                                        register.getSurname()), new DaoPostgresql());
+                        if (isRegistered) {
+                            Message.registerSuccess();
+                        } else {
+                            Message.registerFailed();
+                        }
                     }
                     break;
                 case "q":

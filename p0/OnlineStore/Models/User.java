@@ -1,7 +1,6 @@
 package Models;
 
-public class UserModel {
-
+public class User {
     private int user_id;
     private String lname;
     private String fname;
@@ -10,12 +9,25 @@ public class UserModel {
     private String card;
 
 
-    public UserModel(String email, String pass) {
+    public User(String email, String pass) {
        this.email = email;
        this.pass = pass;
     }
 
-   public UserModel(String email, String pass, String fname, String lname, String card) {
+      public User(int user_id, String fname, String lname) {
+        this.user_id = user_id;
+        this.fname = fname;
+        this.lname = lname;
+    }
+
+    public User(String email, String pass, String fname, String lname) {
+        this.email = email;
+        this.pass = pass;
+        this.fname = fname;
+        this.lname = lname;
+    }
+
+   public User(String email, String pass, String fname, String lname, String card) {
         this.email = email;
         this.pass = pass;
         this.fname = fname;

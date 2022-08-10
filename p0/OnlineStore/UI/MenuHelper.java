@@ -3,7 +3,6 @@ package UI;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 import java.util.ArrayList;
-
 public class MenuHelper {
     public static void displayMenu(String[] menu) {
         for (int i = 0; i < menu.length; i++) {

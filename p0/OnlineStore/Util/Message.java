@@ -15,7 +15,8 @@ public class Message {
         System.out.printf("Choose your option: ");
     }
     public static void listOfStores() {
-        System.out.println("List of Stores:");
+        System.out.println("\nList of Stores:");
+        System.out.println(" ID\t\tLocation");
     }
     public static void chooseStore() {
         System.out.println("Choose Store:");
@@ -29,6 +30,9 @@ public class Message {
     }
     public static void registerSuccess() {
         System.out.println("Registration successful! Please login.\n");
+    }
+    public static void registerFailed() {
+        System.out.println("Failed to register! Please, try again...\n");
     }
 
     public static void  wrongInputTryAgain() {
@@ -97,5 +101,6 @@ public class Message {
     public static void welcomeToStore() {
         System.out.println("Welcome to our store!");
     }
+
 }
 

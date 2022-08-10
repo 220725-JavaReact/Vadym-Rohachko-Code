@@ -5,29 +5,27 @@ import java.util.HashMap;
 
 
 public class Login {
-    private String _login = "";
-    private String _pass = "";
-    private boolean _isRejected = false;
+    private String login = "";
+    private String pass = "";
+    private boolean isRejected = false;
 
     public String getLogin() {
-        return _login;
+        return this.login;
     }
 
     public void setLogin(String login) {
-        this._login = login;
+        this.login = login;
     }
 
     public String getPass() {
-        return _pass;
+        return pass;
     }
 
     public void setPass(String pass) {
-        this._pass = pass;
+        this.pass = pass;
     }
 
     public boolean isRejected() {
-        return _isRejected;
+        return isRejected;
     }
-
-
 }
