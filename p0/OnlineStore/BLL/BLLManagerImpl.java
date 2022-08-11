@@ -38,6 +38,12 @@ public class BLLManagerImpl implements IBLLManager {
     }
 
     @Override
+    public ArrayList<Product> processAllProductsFromInventory() {
+        ArrayList<Product> products = new ProductDaoImpl().getAllAvailableProductsFromInventory();
+        return products != null ? products : null;
+    }
+
+    @Override
     public ArrayList<Archive> processArchivesByUserId(int userId) { 
         return new ArchiveDaoImpl().getArchiveByUserId(userId);
     }
