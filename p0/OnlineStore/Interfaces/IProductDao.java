@@ -8,3 +8,5 @@ public interface IProductDao {
     ArrayList<Product> getAvailableProductsFromInventoryByCategory(int categoryId);
     ArrayList<Product> getAvailableProductsFromInventoryByStore(int storeId);
 }
+
+

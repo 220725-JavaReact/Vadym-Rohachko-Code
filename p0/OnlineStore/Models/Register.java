@@ -112,5 +112,4 @@ public class Register {
     public boolean isRejected() {
         return _isRejected;
     }
-
 }

@@ -46,5 +46,4 @@ public class Archive {
         this.archiveCreatedAt = archiveCreatedAt;
         this.priceTotal = pricePerItem.multiply(BigDecimal.valueOf(this.quantity));
     }
-
 }

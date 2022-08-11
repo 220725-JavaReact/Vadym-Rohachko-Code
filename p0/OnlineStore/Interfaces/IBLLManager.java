@@ -16,3 +16,4 @@ public interface IBLLManager {
 
     ArrayList<Archive> processArchivesByUserId(int userId);
 }
+
