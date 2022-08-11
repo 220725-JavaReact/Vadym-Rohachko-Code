@@ -1,7 +1,6 @@
 package Interfaces;
 
 import Models.*;
-
 import java.util.ArrayList;
 
 public interface IProductDao {

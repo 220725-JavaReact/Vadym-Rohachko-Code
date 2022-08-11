@@ -8,7 +8,6 @@ import Models.*;
 import java.util.ArrayList;
 
 public class BLLManagerImpl implements IBLLManager {
-    //User user;
 
     @Override
     public boolean processLogin(String login, String password) {
