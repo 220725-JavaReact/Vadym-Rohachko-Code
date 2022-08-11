@@ -38,7 +38,7 @@ public class BLLManagerImpl implements IBLLManager {
     }
 
     @Override
-    public ArrayList<Archive> processArchivesByUserId(int userId) {
+    public ArrayList<Archive> processArchivesByUserId(int userId) { 
         return new ArchiveDaoImpl().getArchiveByUserId(userId);
     }
 }
