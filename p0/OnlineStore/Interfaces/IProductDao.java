@@ -7,4 +7,5 @@ public interface IProductDao {
     Product getAvailableProductFromInventoryById(int productId);
     ArrayList<Product> getAvailableProductsFromInventoryByCategory(int categoryId);
     ArrayList<Product> getAvailableProductsFromInventoryByStore(int storeId);
+    ArrayList<Product> getAllAvailableProductsFromInventory();
 }

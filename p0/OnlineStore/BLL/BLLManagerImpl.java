@@ -37,5 +37,11 @@ public class BLLManagerImpl implements IBLLManager {
         ArrayList<Product> products = new ProductDaoImpl().getAvailableProductsFromInventoryByStore(storeId);
         return products != null ? products : null;
     }
+
+    @Override
+    public ArrayList<Product> processAllProductsFromInventory() {
+        ArrayList<Product> products = new ProductDaoImpl().getAllAvailableProductsFromInventory();
+        return products != null ? products : null;
+    }
 }
 

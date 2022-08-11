@@ -69,6 +69,9 @@ public class Driver {
                                         try {
                                             int categoryId = 1;
                                             System.out.println(new BLLManagerImpl().processProductsByCategory(categoryId).size());
+                                            for(Product product : new BLLManagerImpl().processProductsByCategory(categoryId)){
+                                                System.out.println(product.getProductName() + " " + product.getCategory());
+                                            }
                                         } catch (NullPointerException e) {
                                             System.out.println("Failed to get products");
                                         }
@@ -76,6 +79,12 @@ public class Driver {
                                         try {
                                             int storeId = 1;
                                             System.out.println(new BLLManagerImpl().processProductsByStore(storeId).size());
+                                        } catch (NullPointerException e) {
+                                            System.out.println("Failed to get products");
+                                        }
+                                        //Get all available products
+                                        try {
+                                            System.out.println(new BLLManagerImpl().processAllProductsFromInventory().size());
                                         } catch (NullPointerException e) {
                                             System.out.println("Failed to get products");
                                         }

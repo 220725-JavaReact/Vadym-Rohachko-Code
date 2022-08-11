@@ -4,10 +4,7 @@ import Interfaces.IProductDao;
 import Models.Product;
 import Util.ConnectionFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class ProductDaoImpl implements IProductDao {
@@ -71,6 +68,26 @@ public class ProductDaoImpl implements IProductDao {
             pstmt.setInt(1, storeId);
             ArrayList<Product> products = new ArrayList<>();
             ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Product product = extractProductFromResultSet(rs);
+                products.add(product);
+            }
+            return products;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public ArrayList<Product> getAllAvailableProductsFromInventory() {
+        try {
+            Connection conn = ConnectionFactory.getInstance().getConnection();
+            String query8 = "order by stores.store_id, products.product_id;";
+            query += query8;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            ArrayList<Product> products = new ArrayList<>();
             while (rs.next()) {
                 Product product = extractProductFromResultSet(rs);
                 products.add(product);
