@@ -1,3 +1,4 @@
+import BLL.BLLManagerImpl;
 import UI.*;
 
 import java.util.HashMap;
@@ -25,8 +26,7 @@ public class Driver {
         Scanner scanner = new Scanner(System.in);
         String userInput = "";
         String[] welcomeScreenOptions = {"Login", "Register", "Exit App\n"};
-        String[] mainMenuShopOptions = {"List of Stores", "Cart",
-                "Account", "History", "Exit Store\n"};
+        String[] mainMenuShopOptions = {"List of Stores", "Cart", "Account", "History", "Exit Store\n"};
         boolean exit = false;
 
         while (!exit) {
@@ -61,6 +61,27 @@ public class Driver {
                                         }
                                         break;
                                     case "2":
+                                        //get single product by id
+                                        try {
+                                            int product_id = 1;
+                                            System.out.println(new BLLManagerImpl().processProductById(product_id).getProductName());
+                                        } catch (NullPointerException e) {
+                                            System.out.println("Failed to get product");
+                                        }
+                                        //Get all available products by category
+                                        try {
+                                            int category_id = 1;
+                                            System.out.println(new BLLManagerImpl().processProductsByCategory(category_id).size());
+                                        } catch (NullPointerException e) {
+                                            System.out.println("Failed to get products");
+                                        }
+                                        //Get all available products by store
+                                        try {
+                                            int category_id = 1;
+                                            System.out.println(new BLLManagerImpl().processProductsByCategory(category_id).size());
+                                        } catch (NullPointerException e) {
+                                            System.out.println("Failed to get products");
+                                        }
                                         System.out.println("Go to Cart\n");
                                         break;
                                     case "3":
@@ -95,12 +116,7 @@ public class Driver {
 //                                        register.getPass(),
 //                                        register.getName(),
 //                                        register.getSurname()), new DaoPostgresql());
-                        boolean isRegistered = new BLLManagerImpl().processRegister(
-                                register.getLogin(),
-                                register.getPass(),
-                                register.getName(),
-                                register.getSurname(),
-                                register.getCardNumber());
+                        boolean isRegistered = new BLLManagerImpl().processRegister(register.getLogin(), register.getPass(), register.getName(), register.getSurname(), register.getCardNumber());
                         if (isRegistered) {
                             Message.registerSuccess();
                         } else {

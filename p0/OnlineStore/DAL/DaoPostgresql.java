@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 
 import Interfaces.IDao;
 import Models.*;
-import Util.ConnectionFactory;
+import Util.*;
 
 public class DaoPostgresql implements IDao<User> {
     @Override

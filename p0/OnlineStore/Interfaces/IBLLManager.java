@@ -1,14 +1,16 @@
 package Interfaces;
 
+import Models.*;
+
+import java.util.ArrayList;
+
 public interface IBLLManager {
-    //    static User processLogin(User user, IDao objDao) {
-//        return null;
-//    }
-//
-//    static boolean processRegister(User user, IDao objDao) {
-//        return false;
-//    }
     boolean processLogin(String login, String password);
 
     boolean processRegister(String login, String password, String name, String surname, String cardNumber);
+
+    Product processProductById(int id);
+
+    ArrayList<Product> processProductsByCategory(int id);
+    ArrayList<Product> processProductsByStore(int id);
 }
