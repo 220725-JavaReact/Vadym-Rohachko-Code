@@ -10,8 +10,6 @@ import Models.*;
 public class Driver {
 
     public static void main(String[] args) {
-
-
         //Menu.manageMenu();
         HashMap<Integer, String> stores = new HashMap<Integer, String>();
         stores.put(11, "Fort Worth");
@@ -42,7 +40,6 @@ public class Driver {
                         //IF LOGIN WAS SUCCESSFUL
                         String email = login.getLogin();
                         String pass = login.getPass();
-//                        User user = BLLManagerImpl.processLogin(new User(email, pass), new DaoPostgresql());
                         boolean isLoginSuccess = new BLLManagerImpl().processLogin(email, pass);
                         if (isLoginSuccess) {
                             System.out.println("Login and Pass are ok! Entering Main Menu...\n");
@@ -63,22 +60,22 @@ public class Driver {
                                     case "2":
                                         //get single product by id
                                         try {
-                                            int product_id = 1;
-                                            System.out.println(new BLLManagerImpl().processProductById(product_id).getProductName());
+                                            int productId = 1;
+                                            System.out.println(new BLLManagerImpl().processProductById(productId).getProductName());
                                         } catch (NullPointerException e) {
                                             System.out.println("Failed to get product");
                                         }
                                         //Get all available products by category
                                         try {
-                                            int category_id = 1;
-                                            System.out.println(new BLLManagerImpl().processProductsByCategory(category_id).size());
+                                            int categoryId = 1;
+                                            System.out.println(new BLLManagerImpl().processProductsByCategory(categoryId).size());
                                         } catch (NullPointerException e) {
                                             System.out.println("Failed to get products");
                                         }
                                         //Get all available products by store
                                         try {
-                                            int category_id = 1;
-                                            System.out.println(new BLLManagerImpl().processProductsByCategory(category_id).size());
+                                            int storeId = 1;
+                                            System.out.println(new BLLManagerImpl().processProductsByStore(storeId).size());
                                         } catch (NullPointerException e) {
                                             System.out.println("Failed to get products");
                                         }
@@ -89,8 +86,6 @@ public class Driver {
                                         break;
                                     case "4":
                                         System.out.println("Go to History\n");
-//                                    DaoPostgresql daoPostgresql = new DaoPostgresql();
-//                                    daoPostgresql.addInstance(new BLLManager());
                                         break;
                                     case "q":
                                         exit = true;
@@ -110,12 +105,6 @@ public class Driver {
                     //Register
                     Register register = new MenuRegister().register();
                     if (register != null) {
-
-//                        boolean isRegistered = BLLManagerImpl.processRegister(
-//                                new User(register.getLogin(),
-//                                        register.getPass(),
-//                                        register.getName(),
-//                                        register.getSurname()), new DaoPostgresql());
                         boolean isRegistered = new BLLManagerImpl().processRegister(register.getLogin(), register.getPass(), register.getName(), register.getSurname(), register.getCardNumber());
                         if (isRegistered) {
                             Message.registerSuccess();
