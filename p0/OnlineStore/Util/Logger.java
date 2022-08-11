@@ -58,3 +58,4 @@ public class Logger {
         info, debug, verbose, warning, fatal, error
     }
 }
+

@@ -8,3 +8,4 @@ public interface IUserDao {
     //boolean updateUser(User user);
     //boolean deleteUser(int id);
 }
+

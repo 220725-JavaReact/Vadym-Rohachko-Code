@@ -7,3 +7,5 @@ import java.util.ArrayList;
 public interface IArchiveDao {
     ArrayList<Archive> getArchiveByUserId(int userId);
 }
+
+

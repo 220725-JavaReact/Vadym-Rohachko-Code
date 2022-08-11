@@ -29,3 +29,4 @@ public class MenuHelper {
         return Pattern.compile(regex).matcher(email).matches();
     }
 }
+

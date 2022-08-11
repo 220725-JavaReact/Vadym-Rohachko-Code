@@ -50,5 +50,4 @@ public class UserDaoImpl implements IUserDao {
         }
         return false;
     }
-
 }

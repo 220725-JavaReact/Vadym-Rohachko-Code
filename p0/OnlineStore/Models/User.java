@@ -8,7 +8,6 @@ public class User {
     private String pass;
     private String card;
 
-
     public User(String email, String pass) {
        this.email = email;
        this.pass = pass;
