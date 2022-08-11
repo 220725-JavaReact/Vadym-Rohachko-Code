@@ -18,6 +18,8 @@ public class Driver {
         stores.put(14, "Allen");
         stores.put(15, "Prosper");
 
+
+
         Logger logger = Logger.getInstance();
         logger.log(Logger.LogLevel.info, "Program started");
 
@@ -94,7 +96,13 @@ public class Driver {
                                         System.out.println("Go to Account\n");
                                         break;
                                     case "4":
-                                        System.out.println("Go to History\n");
+                                        //Get all records from Archive ordered by order for the current user
+                                        try {
+                                            int userId = 1;
+                                            System.out.println(new BLLManagerImpl().processArchivesByUserId(userId).size());
+                                        } catch (NullPointerException e) {
+                                            System.out.println("Failed to get records from Archive");
+                                        }
                                         break;
                                     case "q":
                                         exit = true;
