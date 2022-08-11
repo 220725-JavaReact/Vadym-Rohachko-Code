@@ -13,4 +13,6 @@ public interface IBLLManager {
 
     ArrayList<Product> processProductsByCategory(int id);
     ArrayList<Product> processProductsByStore(int id);
+
+    ArrayList<Archive> processArchivesByUserId(int userId);
 }

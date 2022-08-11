@@ -2,7 +2,6 @@ package BLL;
 
 import DAL.*;
 import Interfaces.IBLLManager;
-import DAL.*;
 import Models.*;
 
 import java.util.ArrayList;
@@ -36,6 +35,11 @@ public class BLLManagerImpl implements IBLLManager {
     public ArrayList<Product> processProductsByStore(int storeId) {
         ArrayList<Product> products = new ProductDaoImpl().getAvailableProductsFromInventoryByStore(storeId);
         return products != null ? products : null;
+    }
+
+    @Override
+    public ArrayList<Archive> processArchivesByUserId(int userId) {
+        return new ArchiveDaoImpl().getArchiveByUserId(userId);
     }
 }
 
