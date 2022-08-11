@@ -87,6 +87,7 @@ public class Driver {
                                         System.out.println("Go to Account\n");
                                         break;
                                     case "4":
+                                        System.out.println("Go to Archive\n");
                                         //Get all records from Archive ordered by order for the current user
                                         try {
                                             int userId = 1;
@@ -94,7 +95,7 @@ public class Driver {
                                         } catch (NullPointerException e) {
                                             System.out.println("Failed to get records from Archive");
                                         }
-                                        System.out.println("Go to Archive\n");
+
                                         break;
                                     case "q":
                                         exit = true;
