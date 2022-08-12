@@ -1,5 +1,6 @@
 package BLL;
 
+import Interfaces.IArchiveDao;
 import Interfaces.IBLLManager;
 import DAL.*;
 import Models.*;
@@ -8,10 +9,16 @@ import java.util.ArrayList;
 
 public class BLLManagerImpl implements IBLLManager {
 
+//    @Override
+//    public boolean processLogin(String login, String password) {
+//        User user = new UserDaoImpl().getUserByLoginAndPassword(login, password);
+//        return user != null ? true : false;
+//    }
+
     @Override
-    public boolean processLogin(String login, String password) {
+    public int processLogin(String login, String password) {
         User user = new UserDaoImpl().getUserByLoginAndPassword(login, password);
-        return user != null ? true : false;
+        return user.getId();
     }
 
     @Override
@@ -44,8 +51,9 @@ public class BLLManagerImpl implements IBLLManager {
     }
 
     @Override
-    public ArrayList<Archive> processArchivesByUserId(int userId) { 
-        return new ArchiveDaoImpl().getArchiveByUserId(userId);
+    public ArrayList<Archive> processArchivesByUserId(int userId, IArchiveDao.SortingType type) {
+        ArrayList<Archive> archives = new ArchiveDaoImpl().getArchiveByUserId(userId, type);
+        return archives != null ? archives : null;
     }
 }
 

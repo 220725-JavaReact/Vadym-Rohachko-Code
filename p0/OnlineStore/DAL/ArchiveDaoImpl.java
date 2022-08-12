@@ -13,10 +13,29 @@ import java.util.ArrayList;
 
 public class ArchiveDaoImpl implements IArchiveDao {
     @Override
-    public ArrayList<Archive> getArchiveByUserId(int userId) {
+    public ArrayList<Archive> getArchiveByUserId(int userId, SortingType type) {
+        String sortOrder = "";
+        switch (type){
+            case order:
+                sortOrder = "order_id";
+                break;
+            case store:
+                sortOrder = "store_id";
+                break;
+            case category:
+                sortOrder = "category_id";
+                break;
+            case time:
+                sortOrder = "order_created_at";
+                break;
+            default:
+                sortOrder = "order_id";
+                break;
+        }
         try {
             Connection conn = ConnectionFactory.getInstance().getConnection();
-            String query = "select * from archives where user_id = ? order by order_id;";
+            String query = "select * from archives where user_id = ? order by " + sortOrder + ";";
+            //query += sortOrder + ";";
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, userId);
             ArrayList<Archive> archives = new ArrayList<>();
@@ -31,6 +50,8 @@ public class ArchiveDaoImpl implements IArchiveDao {
         }
         return null;
     }
+
+
 
     private Archive extractArchiveFromResultSet(ResultSet rs) throws SQLException {
         Archive archive = new Archive(
@@ -52,5 +73,6 @@ public class ArchiveDaoImpl implements IArchiveDao {
                 rs.getTimestamp("archive_created_at"));
         return archive;
     }
+
 }
 
