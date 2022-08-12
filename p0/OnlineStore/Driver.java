@@ -1,6 +1,8 @@
 import BLL.BLLManagerImpl;
+import Interfaces.IArchiveDao;
 import UI.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -19,7 +21,6 @@ public class Driver {
         stores.put(15, "Prosper");
 
 
-
         Logger logger = Logger.getInstance();
         logger.log(Logger.LogLevel.info, "Program started");
 
@@ -27,11 +28,12 @@ public class Driver {
         String userInput = "";
         String[] welcomeScreenOptions = {"Login", "Register", "Exit App\n"};
         String[] mainMenuShopOptions = {"List of Stores", "Cart", "Account", "History", "Exit Store\n"};
+        String[] menuSortingOptions = {"Order", "Store", "Category", "Time", "Back to prev menu\n"};
         boolean exit = false;
 
         while (!exit) {
-            Message.welcomeToStore();
-            MenuHelper.displayMenu(welcomeScreenOptions);
+            //Message.welcomeToStore();
+            MenuHelper.displayMenu(welcomeScreenOptions, "Welcome to the Store!");
             userInput = scanner.nextLine();
 
             switch (userInput) {
@@ -42,13 +44,12 @@ public class Driver {
                         //IF LOGIN WAS SUCCESSFUL
                         String email = login.getLogin();
                         String pass = login.getPass();
-                        boolean isLoginSuccess = new BLLManagerImpl().processLogin(email, pass);
-                        if (isLoginSuccess) {
+                        int userId = new BLLManagerImpl().processLogin(email, pass);
+                        if (userId > 0) {
                             System.out.println("Login and Pass are ok! Entering Main Menu...\n");
                             //MAIN MENU
                             while (!exit) {
-                                Message.mainMenu();
-                                MenuHelper.displayMenu(mainMenuShopOptions);
+                                MenuHelper.displayMenu(mainMenuShopOptions, "Main menu:");
                                 userInput = scanner.nextLine();
                                 switch (userInput) {
                                     //List of stores
@@ -60,7 +61,7 @@ public class Driver {
                                         }
                                         break;
                                     case "2":
-                                        //get single product by id
+                                        //Get single product by id
                                         try {
                                             int productId = 1;
                                             System.out.println(new BLLManagerImpl().processProductById(productId).getProductName());
@@ -71,7 +72,7 @@ public class Driver {
                                         try {
                                             int categoryId = 1;
                                             System.out.println(new BLLManagerImpl().processProductsByCategory(categoryId).size());
-                                            for(Product product : new BLLManagerImpl().processProductsByCategory(categoryId)){
+                                            for (Product product : new BLLManagerImpl().processProductsByCategory(categoryId)) {
                                                 System.out.println(product.getProductName() + " " + product.getCategory());
                                             }
                                         } catch (NullPointerException e) {
@@ -96,13 +97,34 @@ public class Driver {
                                         System.out.println("Go to Account\n");
                                         break;
                                     case "4":
-                                        //Get all records from Archive ordered by order for the current user
-                                        try {
-                                            int userId = 1;
-                                            System.out.println(new BLLManagerImpl().processArchivesByUserId(userId).size());
-                                        } catch (NullPointerException e) {
-                                            System.out.println("Failed to get records from Archive");
+                                        while (!exit) {
+                                            MenuHelper.displayMenu(menuSortingOptions, "Sort Archive by:");
+                                            userInput = scanner.nextLine();
+                                            switch (userInput) {
+                                                case "1":
+                                                    System.out.println("Sorting by Order...");
+                                                    Helper.displayArchive(userId, IArchiveDao.SortingType.order);
+                                                    break;
+                                                case "2":
+                                                    System.out.println("Sorting by Store...");
+                                                    Helper.displayArchive(userId, IArchiveDao.SortingType.store);
+                                                    break;
+                                                case "3":
+                                                    System.out.println("Sorting by Category...");
+                                                    Helper.displayArchive(userId, IArchiveDao.SortingType.category);
+                                                    break;
+                                                case "4":
+                                                    System.out.println("Sorting by Time...");
+                                                    Helper.displayArchive(userId, IArchiveDao.SortingType.time);
+                                                    break;
+                                                case "q":
+                                                    exit = true;
+                                                default:
+                                                    Message.wrongInput();
+                                                    break;
+                                            }
                                         }
+                                        exit = false;
                                         break;
                                     case "q":
                                         exit = true;
@@ -122,7 +144,10 @@ public class Driver {
                     //Register
                     Register register = new MenuRegister().register();
                     if (register != null) {
-                        boolean isRegistered = new BLLManagerImpl().processRegister(register.getLogin(), register.getPass(), register.getName(), register.getSurname(), register.getCardNumber());
+                        boolean isRegistered =
+                                new BLLManagerImpl().processRegister(register.getLogin(),
+                                        register.getPass(), register.getName(),
+                                        register.getSurname(), register.getCardNumber());
                         if (isRegistered) {
                             Message.registerSuccess();
                         } else {

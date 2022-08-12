@@ -5,7 +5,8 @@ import Models.*;
 import java.util.ArrayList;
 
 public interface IBLLManager {
-    boolean processLogin(String login, String password);
+//    boolean processLogin(String login, String password);
+int processLogin(String login, String password);
 
     boolean processRegister(String login, String password, String name, String surname, String cardNumber);
 
@@ -14,7 +15,7 @@ public interface IBLLManager {
     ArrayList<Product> processProductsByCategory(int id);
     ArrayList<Product> processProductsByStore(int id);
     ArrayList<Product> processAllProductsFromInventory();
-    ArrayList<Archive> processArchivesByUserId(int userId);
+    ArrayList<Archive> processArchivesByUserId(int userId, IArchiveDao.SortingType type);
 
 }
 

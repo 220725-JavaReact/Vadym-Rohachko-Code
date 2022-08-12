@@ -8,6 +8,75 @@ public class Archive {
     private int userId;
     private int orderId;
     private int itemId;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public int getStoreId() {
+        return storeId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getStoreLocation() {
+        return storeLocation;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public BigDecimal getPricePerItem() {
+        return pricePerItem;
+    }
+
+    public BigDecimal getPriceTotal() {
+        return priceTotal;
+    }
+
+    public Timestamp getOrderCreatedAt() {
+        return orderCreatedAt;
+    }
+
+    public Timestamp getArchiveCreatedAt() {
+        return archiveCreatedAt;
+    }
+
     private int storeId;
     private int productId;
     private int categoryId;
@@ -45,5 +114,8 @@ public class Archive {
         this.orderCreatedAt = orderCreatedAt;
         this.archiveCreatedAt = archiveCreatedAt;
         this.priceTotal = pricePerItem.multiply(BigDecimal.valueOf(this.quantity));
+
+
     }
+
 }
