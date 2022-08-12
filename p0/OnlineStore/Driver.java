@@ -97,34 +97,8 @@ public class Driver {
                                         System.out.println("Go to Account\n");
                                         break;
                                     case "4":
-                                        while (!exit) {
-                                            MenuHelper.displayMenu(menuSortingOptions, "Sort Archive by:");
-                                            userInput = scanner.nextLine();
-                                            switch (userInput) {
-                                                case "1":
-                                                    System.out.println("Sorting by Order...");
-                                                    Helper.displayArchive(userId, IArchiveDao.SortingType.order);
-                                                    break;
-                                                case "2":
-                                                    System.out.println("Sorting by Store...");
-                                                    Helper.displayArchive(userId, IArchiveDao.SortingType.store);
-                                                    break;
-                                                case "3":
-                                                    System.out.println("Sorting by Category...");
-                                                    Helper.displayArchive(userId, IArchiveDao.SortingType.category);
-                                                    break;
-                                                case "4":
-                                                    System.out.println("Sorting by Time...");
-                                                    Helper.displayArchive(userId, IArchiveDao.SortingType.time);
-                                                    break;
-                                                case "q":
-                                                    exit = true;
-                                                default:
-                                                    Message.wrongInput();
-                                                    break;
-                                            }
-                                        }
-                                        exit = false;
+                                        exit = Helper.archiveSortAndDisplay(exit, userId, menuSortingOptions);
+                                        //exit = false;
                                         break;
                                     case "q":
                                         exit = true;
