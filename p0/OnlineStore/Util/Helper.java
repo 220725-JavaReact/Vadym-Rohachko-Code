@@ -6,7 +6,7 @@ import Models.Archive;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.time.LocalDateTime;
+import java.util.Scanner;
 
 public class Helper {
     public static void displayArchive(int userId, IArchiveDao.SortingType type) {
@@ -35,5 +35,38 @@ public class Helper {
         } catch (NullPointerException e) {
             System.out.println("Failed to get records from Archive");
         }
+    }
+
+    public static boolean archiveSortAndDisplay(boolean isExit, int userId, String[] menuSortingOptions){
+        Scanner scanner = new Scanner(System.in);
+        while (!isExit) {
+            MenuHelper.displayMenu(menuSortingOptions, "Sort Archive by:");
+            String userInput = scanner.nextLine();
+            switch (userInput) {
+                case "1":
+                    System.out.println("Sorting by Order...");
+                    Helper.displayArchive(userId, IArchiveDao.SortingType.order);
+                    break;
+                case "2":
+                    System.out.println("Sorting by Store...");
+                    Helper.displayArchive(userId, IArchiveDao.SortingType.store);
+                    break;
+                case "3":
+                    System.out.println("Sorting by Category...");
+                    Helper.displayArchive(userId, IArchiveDao.SortingType.category);
+                    break;
+                case "4":
+                    System.out.println("Sorting by Time...");
+                    Helper.displayArchive(userId, IArchiveDao.SortingType.time);
+                    break;
+                case "q":
+                    isExit = true;
+                    break;
+                default:
+                    Message.wrongInput();
+                    break;
+            }
+        }
+        return false;
     }
 }
