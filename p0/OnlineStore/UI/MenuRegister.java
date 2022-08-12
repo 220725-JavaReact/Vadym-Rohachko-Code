@@ -7,7 +7,7 @@ import Util.*;
 
 public class MenuRegister {
 
-    public Register register() {
+    public static Register register() {
 
         Scanner scanner = new Scanner(System.in);
         Register register = new Register();
