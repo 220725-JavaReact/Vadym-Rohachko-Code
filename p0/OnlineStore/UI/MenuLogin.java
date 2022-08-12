@@ -7,7 +7,7 @@ import Util.*;
 
 public class MenuLogin {
 
-    public Login getLogin() {
+    public static Login processLoginInUI() {
 
         Scanner scanner = new Scanner(System.in);
         Login login = new Login();
