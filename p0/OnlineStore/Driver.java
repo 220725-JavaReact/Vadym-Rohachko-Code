@@ -55,7 +55,7 @@ public class Driver {
                     break;
                 case "2":
                     //Register
-                    Register register = new MenuRegister().register();
+                    Register register = MenuRegister.register();
                     if (register != null) {
                         boolean isRegistered =
                                 new BLLManagerImpl().processRegister(register.getLogin(),
