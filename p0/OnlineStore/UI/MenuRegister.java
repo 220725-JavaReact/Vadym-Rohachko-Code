@@ -25,7 +25,7 @@ public class MenuRegister {
             } else if (userInput.equals("q")) {
                 exit = true;
                 register = null;
-            } else if (!MenuHelper.validateEmail(userInput)) {
+            } else if (!Helper.validateEmail(userInput)) {
                 Message.wrongEmailFormat();
             } else {
                 register.setLogin(userInput);

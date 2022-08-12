@@ -18,7 +18,7 @@ public class BLLManagerImpl implements IBLLManager {
     @Override
     public int processLogin(String login, String password) {
         User user = new UserDaoImpl().getUserByLoginAndPassword(login, password);
-        return user.getId();
+        return user != null ? user.getId() : -1;
     }
 
     @Override

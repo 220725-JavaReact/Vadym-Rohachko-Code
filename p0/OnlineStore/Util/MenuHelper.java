@@ -27,10 +27,5 @@ public class MenuHelper {
         System.out.printf("[%s] - %s\n", "q", "Back to prev menu");
         System.out.printf("Choose your option: ");
     }
-
-    public static boolean validateEmail(String email) {
-        String regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
-        return Pattern.compile(regex).matcher(email).matches();
-    }
 }
 
