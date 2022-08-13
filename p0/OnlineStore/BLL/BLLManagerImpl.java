@@ -9,12 +9,6 @@ import java.util.ArrayList;
 
 public class BLLManagerImpl implements IBLLManager {
 
-//    @Override
-//    public boolean processLogin(String login, String password) {
-//        User user = new UserDaoImpl().getUserByLoginAndPassword(login, password);
-//        return user != null ? true : false;
-//    }
-
     @Override
     public int processLogin(String login, String password) {
         User user = new UserDaoImpl().getUserByLoginAndPassword(login, password);
@@ -54,6 +48,18 @@ public class BLLManagerImpl implements IBLLManager {
     public ArrayList<Archive> processArchivesByUserId(int userId, IArchiveDao.SortingType type) {
         ArrayList<Archive> archives = new ArchiveDaoImpl().getArchiveByUserId(userId, type);
         return archives != null ? archives : null;
+    }
+
+    @Override
+    public ArrayList<Store> processListOfStores() {
+        ArrayList<Store> stores = new StoreDaoImpl().getStores();
+        return stores != null ? stores : null;
+    }
+
+    @Override
+    public Store processStoreById(int storeId) {
+        Store store = new StoreDaoImpl().getStore(storeId);
+        return store != null ? store : null;
     }
 }
 

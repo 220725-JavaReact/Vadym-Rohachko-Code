@@ -1,41 +1,49 @@
 package UI;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
+import Util.Helper;
 import Util.MenuHelper;
 import Util.Message;
+import Models.*;
 
 public class MenuListOfStores {
-    public static String manageMenuOfStores(HashMap<Integer, String> stores) {
+    public static String manageMenuOfStores(ArrayList<Store> stores) {
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
-        String userInput = "";
-        int choice = 0;
 
         while (!exit) {
-            Message.listOfStores();
             MenuHelper.displayMenu(stores);
-
-            userInput = scanner.nextLine();
+            String userStoreChoice = scanner.nextLine();
 
             try {
-                choice = Integer.parseInt(userInput);
-                if (stores.containsKey(choice) == true) {
-                    //Return the ID of the store
-                    return userInput;
-                } else {
-                    System.out.printf("We have no store with ID %d. Try again...\n\n", choice);
+                String storeId = Helper.validateUserInput(userStoreChoice);
+                switch (storeId) {
+                    case "q":
+                        return "q";
+                    case "0":
+                    case "-1":
+                        return "-1";
+                    default:
+                        //check whether there is a store in DB with storeId
+                        List result =
+                                stores.stream()
+                                        .filter(store -> String.valueOf(store.getStoreId()).equals(storeId))
+                                        .collect(Collectors.toList());
+                        if (!result.isEmpty()) {
+                            return userStoreChoice;
+                        } else {
+                            return "0";
+                        }
                 }
             } catch (Exception e) {
-                if (userInput.equals("q")) {
-                    //Exit menu (code "q")
-                    return userInput;
-                } else {
-                    Message.wrongInputTryAgain();
-                }
+                e.printStackTrace();
+                return "-1";
             }
         }
-        return "";
+        return "-1";
     }
 }
