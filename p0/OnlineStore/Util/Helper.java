@@ -85,4 +85,21 @@ public class Helper {
         String regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
         return Pattern.compile(regex).matcher(email).matches();
     }
+
+    //check if user entered valid data
+    //return "q" to quit
+    //return "0" if input is negative
+    //return "-1" if NumberFormatException caught
+    //return userInput if input is valid (it is an int and is more than 0)
+    public static String validateUserInput(String userInput) {
+        if (userInput.equals("q")) {
+            return "q";
+        }
+        try {
+            int result = Integer.valueOf(userInput);
+            return result > 0 ? userInput : "0";
+        } catch (NumberFormatException e) {
+            return "-1";
+        }
+    }
 }

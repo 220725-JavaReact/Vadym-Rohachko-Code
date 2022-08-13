@@ -1,30 +1,91 @@
 package UI;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
+import DAL.StoreDaoImpl;
 import Util.*;
 import Models.*;
 import BLL.*;
 
 public class MainMenuManager {
+    private static Scanner scanner = new Scanner(System.in);
 
-    private static void processCart(){
+    private static void processCart() {
         System.out.println("You ar inside the Cart!");
     }
 
-    private static void processShopping(){
-        System.out.println("You ar inside the Store!");
+    //get all available stores from inventory
+    private static String chooseStoreFromMenu() {
+        //get all available stores from inventory
+        ArrayList listOfStoresAvailableInInventory = new BLLManagerImpl().processListOfStores();
+        //get id of the chosen store
+        return MenuListOfStores.manageMenuOfStores(listOfStoresAvailableInInventory);
+    }
+
+    //display all available products from the current store
+    private static String chooseProductFromMenu(String storeId) {
+        int id = Integer.valueOf(storeId);
+        //list of products from the chosen store
+        ArrayList<Product> listOfProducts =
+                new BLLManagerImpl().processProductsByStore(id);
+        //display the products on the screen
+        MenuHelper.displayProducts(listOfProducts, id);
+        //validated user choice
+        String idOfChosenProduct = Helper.validateUserInput(scanner.nextLine());
+        //check if there is id of store in current meu that is displayed on screen
+        int sizeOfList =
+                listOfProducts.stream()
+                        .filter(product -> String.valueOf(product.getProductId()).equals(idOfChosenProduct))
+                        .collect(Collectors.toList()).size();
+        //if no id in current list, than return "-1" error, else return user's choice
+        return sizeOfList < 1 ? "-1" : idOfChosenProduct;
+    }
+
+    //dealing with stores and their contents
+    private static void processShopping() {
+        boolean exitToMainMenu = false;
+        while (!exitToMainMenu) {
+            //get validated id of the chosen store
+            String idOfChosenStore = chooseStoreFromMenu();
+            boolean exitToListOfStores = false;
+            if (idOfChosenStore.equals("q")) {
+                //move to the previous menu
+                break;
+            } else if (idOfChosenStore.equals("-1") || idOfChosenStore.equals("0")) {
+                Message.wrongInputTryAgain();
+                exitToListOfStores = true;
+            }
+            while (!exitToListOfStores) {
+                //Get all available products from the chosen store
+                try {
+                    //get validate user's choice of choice
+                    String idOfChosenProduct = chooseProductFromMenu(idOfChosenStore);
+                    //return to Stores menu if "q"
+                    if (idOfChosenProduct.equals("q")) {
+                        break;
+                    } else if (idOfChosenProduct.equals("-1") || idOfChosenProduct.equals("0")) {
+                        Message.wrongInputTryAgain();
+                    } else {
+                        try {
+                            System.out.println("Checking if a store with ID #" + idOfChosenProduct + " is in the DB...");
+                            //work with DB...
+                            //add to local list
+                            //continue shopping...
+                        } catch (Exception e) {
+                            Message.wrongInputTryAgain();
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Failed to get products");
+                }
+            }
+        }
     }
 
     public static void processMainMenu(int userId) {
-        HashMap<Integer, String> stores = new HashMap<Integer, String>();
-        stores.put(11, "Fort Worth");
-        stores.put(13, "Dallas");
-        stores.put(12, "McKinney");
-        stores.put(14, "Allen");
-        stores.put(15, "Prosper");
-
         Scanner scanner = new Scanner(System.in);
         String userInput = "";
         String[] mainMenuShopOptions = {"List of Stores", "Cart", "Account", "History", "Exit Store\n"};
@@ -37,12 +98,6 @@ public class MainMenuManager {
             switch (userInput) {
                 //List of stores
                 case "1":
-                    //Temporary get list of stores in HashMap format
-                    String choiceOfStore = MenuListOfStores.manageMenuOfStores(stores);
-                    if (!choiceOfStore.equals("q")) {
-                        Store.displayStore(Integer.parseInt(choiceOfStore));
-                    }
-                    //Get id of the Store
                     //Move to the store for shopping
                     processShopping();
 ////Get single product by id
