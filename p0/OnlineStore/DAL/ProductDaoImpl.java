@@ -19,13 +19,33 @@ public class ProductDaoImpl implements IProductDao {
     private String query = query1 + query2 + query3 + query4 + query5 + query6 + query7;
 
     @Override
-    public Product getAvailableProductFromInventoryById(int userId) {
+    public Product getAvailableProductFromInventoryById(int productId) {
         try {
             Connection conn = ConnectionFactory.getInstance().getConnection();
             String query8 = "where products.product_id = ?;";
             query += query8;
             PreparedStatement pstmt = conn.prepareStatement(query);
-            pstmt.setInt(1, userId);
+            pstmt.setInt(1, productId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                Product product = extractProductFromResultSet(rs);
+                return product;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Product getAvailableProductFromInventoryById(int storeId, int productId) {
+        try {
+            Connection conn = ConnectionFactory.getInstance().getConnection();
+            String query8 = "where inventories.product_id = ? and inventories.store_id = ?;";
+            query += query8;
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, productId);
+            pstmt.setInt(2, storeId);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 Product product = extractProductFromResultSet(rs);
