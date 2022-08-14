@@ -52,7 +52,7 @@ public class CartDaoImpl implements ICartDao {
         try {
             Connection conn = ConnectionFactory.getInstance().getConnection();
             String query = "insert into carts (user_id, store_id, product_id, quantity, " +
-                    "product_name, description, category, fname, lname, store_location) values(?,?,?,?,?,?,?,?,?,?);";
+                    "product_name, description, category, fname, lname, store_location, category_id, price_per_item) values(?,?,?,?,?,?,?,?,?,?,?,?);";
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, cart.getUserId());
             pstmt.setInt(2, cart.getStoreId());
@@ -63,7 +63,9 @@ public class CartDaoImpl implements ICartDao {
             pstmt.setString(7, product.getCategory());
             pstmt.setString(8, user.getFname());
             pstmt.setString(9, user.getLname());
-           pstmt.setString(10, store.getStoreLocation());
+            pstmt.setString(10, store.getStoreLocation());
+            pstmt.setInt(11, product.getCategoryId());
+            pstmt.setDouble(12, product.getPrice());
             int count = pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
