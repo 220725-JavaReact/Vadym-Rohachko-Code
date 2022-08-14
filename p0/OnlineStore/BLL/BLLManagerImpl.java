@@ -4,6 +4,7 @@ import Interfaces.IArchiveDao;
 import Interfaces.IBLLManager;
 import DAL.*;
 import Models.*;
+import Enum.*;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,12 @@ public class BLLManagerImpl implements IBLLManager {
     @Override
     public Product processProductById(int productId) {
         Product product = new ProductDaoImpl().getAvailableProductFromInventoryById(productId);
+        return product != null ? product : null;
+    }
+
+    @Override
+    public Product processProductById(int storeId, int productId) {
+        Product product = new ProductDaoImpl().getAvailableProductFromInventoryById(storeId, productId);
         return product != null ? product : null;
     }
 
@@ -60,6 +67,26 @@ public class BLLManagerImpl implements IBLLManager {
     public Store processStoreById(int storeId) {
         Store store = new StoreDaoImpl().getStore(storeId);
         return store != null ? store : null;
+    }
+
+    @Override
+    public Cart processSingleRecordFromCart(Cart cart, CommandWord command) {
+        switch(command){
+            case SELECT:
+                return new CartDaoImpl().getSingleRecordFromCart(cart);
+            case UPDATE:
+                new CartDaoImpl().updateProductInCart(cart);
+                break;
+            case INSER:
+                new CartDaoImpl().addProductToCart(cart);
+                break;
+        }
+        return null;
+    }
+
+    @Override
+    public ArrayList<Cart> processRecordsFromCartByUserId(int userId) {
+        return null;
     }
 }
 

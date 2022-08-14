@@ -10,7 +10,19 @@ import java.sql.ResultSet;
 
 public class UserDaoImpl implements IUserDao {
     @Override
-    public User getUserById(int id) {
+    public User getUserById(int userId) {
+        try {
+            Connection conn = ConnectionFactory.getInstance().getConnection();
+            String query = "select * from users where user_id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return new User(rs.getInt("user_id"), rs.getString("fname"), rs.getString("lname"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

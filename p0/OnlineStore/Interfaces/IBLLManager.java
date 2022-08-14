@@ -4,6 +4,8 @@ import Models.*;
 
 import java.util.ArrayList;
 
+import Enum.*;
+
 public interface IBLLManager {
     //    boolean processLogin(String login, String password);
     int processLogin(String login, String password);
@@ -11,6 +13,8 @@ public interface IBLLManager {
     boolean processRegister(String login, String password, String name, String surname, String cardNumber);
 
     Product processProductById(int id);
+
+    Product processProductById(int storeId, int productId);
 
     ArrayList<Product> processProductsByCategory(int id);
 
@@ -23,5 +27,10 @@ public interface IBLLManager {
     ArrayList<Store> processListOfStores();
 
     Store processStoreById(int storeId);
+
+    Cart processSingleRecordFromCart(Cart cart, CommandWord command);
+
+    ArrayList<Cart> processRecordsFromCartByUserId(int userId);
+
 }
 

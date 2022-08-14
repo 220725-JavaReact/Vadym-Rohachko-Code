@@ -1,14 +1,19 @@
 package UI;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import DAL.CartDaoImpl;
 import DAL.StoreDaoImpl;
 import Util.*;
 import Models.*;
 import BLL.*;
+import Enum.*;
+
 
 public class MainMenuManager {
     private static Scanner scanner = new Scanner(System.in);
@@ -35,17 +40,19 @@ public class MainMenuManager {
         MenuHelper.displayProducts(listOfProducts, id);
         //validated user choice
         String idOfChosenProduct = Helper.validateUserInput(scanner.nextLine());
+        if (idOfChosenProduct.equals("q") || idOfChosenProduct.equals("0") || idOfChosenProduct.equals("-1"))
+            return idOfChosenProduct;
         //check if there is id of store in current meu that is displayed on screen
         int sizeOfList =
                 listOfProducts.stream()
                         .filter(product -> String.valueOf(product.getProductId()).equals(idOfChosenProduct))
                         .collect(Collectors.toList()).size();
         //if no id in current list, than return "-1" error, else return user's choice
-        return sizeOfList < 1 ? "-1" : idOfChosenProduct;
+        return sizeOfList == 0 ? "-1" : idOfChosenProduct;
     }
 
     //dealing with stores and their contents
-    private static void processShopping() {
+    private static void processShopping(int userId) {
         boolean exitToMainMenu = false;
         while (!exitToMainMenu) {
             //get validated id of the chosen store
@@ -66,14 +73,58 @@ public class MainMenuManager {
                     //return to Stores menu if "q"
                     if (idOfChosenProduct.equals("q")) {
                         break;
-                    } else if (idOfChosenProduct.equals("-1") || idOfChosenProduct.equals("0")) {
+                    }
+                    //get quantity from user
+                    System.out.println("Enter quantity of product:");
+                    String quantityOfProduct = Helper.validateUserInput(scanner.nextLine());
+                    //return to Stores menu if "q"
+                    if (quantityOfProduct.equals("q")) {
+                        break;
+                    }
+                    //return to Stores menu if "q"
+                    if (idOfChosenProduct.equals("-1") || idOfChosenProduct.equals("0")) {
+                        Message.wrongInputTryAgain();
+                    } else if (quantityOfProduct.equals("-1") || quantityOfProduct.equals("0")) {
                         Message.wrongInputTryAgain();
                     } else {
                         try {
-                            System.out.println("Checking if a store with ID #" + idOfChosenProduct + " is in the DB...");
-                            //work with DB...
-                            //add to local list
-                            //continue shopping...
+                            //check if available in DB
+                            Product product =
+                                    new BLLManagerImpl()
+                                            .processProductById(Integer.valueOf(idOfChosenStore),
+                                                    Integer.valueOf(idOfChosenProduct));
+                            if (product == null) {
+                                System.out.println("Failed to add to Shopping Cart due to internal error");
+                            } else {
+                                if (product.getQuantity() == 0) {
+                                    System.out.println("We do not have the product at this store.");
+                                    System.out.println("Please, Order from another location.");
+                                    System.out.println("Sorry for inconvenience...");
+                                } else if (Integer.valueOf(quantityOfProduct) >= product.getQuantity()) {
+                                    System.out.println("Failed to add to Shopping Cart");
+                                    System.out.println("You requested " + quantityOfProduct + ",items we have only " + product.getQuantity());
+                                    System.out.println("Request less quantity or order the product from another location.");
+                                    System.out.println("Sorry for inconvenience...");
+                                } else {
+                                    //collect cart for sql request to check if there is such a record in the Cart table
+                                    Cart cart = new Cart(userId, product.getStoreId(), product.getProductId(), Integer.valueOf(quantityOfProduct));
+
+                                    Cart cartTemp = new BLLManagerImpl().processSingleRecordFromCart(cart, CommandWord.SELECT);
+                                    if (cartTemp != null) {
+                                        new BLLManagerImpl().processSingleRecordFromCart(cart, CommandWord.UPDATE);
+                                        System.out.println("Product updated in Cart!");
+                                    } else {
+                                        new BLLManagerImpl().processSingleRecordFromCart(cart, CommandWord.INSER);
+                                        System.out.println("Product added to Cart!");
+                                    }
+                                    //menu to go to Cart
+
+                                    //processCart();
+
+
+                                }
+
+                            }
                         } catch (Exception e) {
                             Message.wrongInputTryAgain();
                         }
@@ -99,7 +150,7 @@ public class MainMenuManager {
                 //List of stores
                 case "1":
                     //Move to the store for shopping
-                    processShopping();
+                    processShopping(userId);
 ////Get single product by id
 //                    try {
 //                        int productId = 1;
