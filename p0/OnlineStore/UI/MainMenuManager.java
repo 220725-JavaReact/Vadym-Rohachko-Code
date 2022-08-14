@@ -18,8 +18,16 @@ import Enum.*;
 public class MainMenuManager {
     private static Scanner scanner = new Scanner(System.in);
 
-    private static void processCart() {
+    private static void processCart(int userId) {
         System.out.println("You ar inside the Cart!");
+        //print list from Cart using current user id only
+        //menu to delete all products
+        //to add any number of the distinct product
+        //to substract any number of the distinct product
+        //while substracting, check if it not negative
+        //if it equals 0, then remove from the cart
+        //return to shopping
+        //return to main menu?
     }
 
     //get all available stores from inventory
@@ -183,7 +191,7 @@ public class MainMenuManager {
 //                    }
                     break;
                 case "2":
-                    processCart();
+                    processCart(userId);
                     break;
                 case "3":
                     System.out.println("Menu 'Account' is closed for reconstruction...\n");
