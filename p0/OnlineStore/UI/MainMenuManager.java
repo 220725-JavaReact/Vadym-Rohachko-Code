@@ -56,7 +56,7 @@ public class MainMenuManager {
                     System.out.println("We do not have the product at this store.");
                     System.out.println("Please, Order from another location.");
                     System.out.println("Sorry for inconvenience...");
-                } else if (Integer.valueOf(quantityOfProduct) >= product.getQuantity()) {
+                } else if (Integer.valueOf(quantityOfProduct) > product.getQuantity()) {
                     System.out.println("Failed to add to Shopping Cart");
                     System.out.println("You requested " + quantityOfProduct + ",items we have only " + product.getQuantity());
                     System.out.println("Request less quantity or order the product from another location.");
@@ -115,7 +115,7 @@ public class MainMenuManager {
     public static void processMainMenu(int userId) {
         Scanner scanner = new Scanner(System.in);
         String userInput = "";
-        String[] mainMenuShopOptions = {"List of Stores", "Cart", "Account", "History", "Exit Store\n"};
+        String[] mainMenuShopOptions = {"Go Shopping!", "Shopping Cart", "Account", "History", "Exit Store\n"};
         String[] menuSortingOptions = {"Order", "Store", "Category", "Time", "Back to prev menu\n"};
         boolean exit = false;
 
@@ -136,37 +136,6 @@ public class MainMenuManager {
                             break;
                         }
                     }
-
-////Get single product by id
-//                    try {
-//                        int productId = 1;
-//                        System.out.println(new BLLManagerImpl().processProductById(productId).getProductName());
-//                    } catch (NullPointerException e) {
-//                        System.out.println("Failed to get product");
-//                    }
-//                    //Get all available products by category
-//                    try {
-//                        int categoryId = 1;
-//                        System.out.println(new BLLManagerImpl().processProductsByCategory(categoryId).size());
-//                        for (Product product : new BLLManagerImpl().processProductsByCategory(categoryId)) {
-//                            System.out.println(product.getProductName() + " " + product.getCategory());
-//                        }
-//                    } catch (NullPointerException e) {
-//                        System.out.println("Failed to get products");
-//                    }
-//                    //Get all available products by store
-//                    try {
-//                        int storeId = 1;
-//                        System.out.println(new BLLManagerImpl().processProductsByStore(storeId).size());
-//                    } catch (NullPointerException e) {
-//                        System.out.println("Failed to get products");
-//                    }
-//                    //Get all available products
-//                    try {
-//                        System.out.println(new BLLManagerImpl().processAllProductsFromInventory().size());
-//                    } catch (NullPointerException e) {
-//                        System.out.println("Failed to get products");
-//                    }
                     break;
                 case "2":
                     CartMenu.processCart(userId);

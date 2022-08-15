@@ -1,12 +1,18 @@
 package Enum;
 
 public enum CommandWord {
-
     INSER("insert"),
     DELETE("delete"),
     UPDATE("update"),
     SELECT("select"),
     HELP("help"),
+    SUCCESS("success"),
+    FAILURE("failure"),
+    FAILURE_DUE_TO_HIGH_AMOUNT("failure_due_to_high_amount"),
+    INCREASE_PLURAL("increase_plural"),
+    INCREASE_SINGLAR("increase_singular"),
+    DECREASE_PLURAL("decrease_plural"),
+    DECREASE_SINGLAR("decrease_singular"),
     QUIT("quit");
     private String commandString;
 
@@ -18,6 +24,11 @@ public enum CommandWord {
         return commandString;
     }
 }
+
+
+
+
+
 
 
 //    CommandWord cmd = CommandWord.HELP;

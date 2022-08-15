@@ -36,6 +36,11 @@ public class MenuHelper {
     }
 
     public static void displayCartRecords(ArrayList<Cart> carts) {
+        if (carts.size() == 0) {
+            System.out.println("Your cart is empty!");
+            System.out.println("[q] to return to previous menu");
+            return;
+        }
         System.out.println("List of available records in cart:");
         System.out.println("[ID]");
         carts.stream().forEach(x -> System.out.printf("" +
@@ -56,12 +61,14 @@ public class MenuHelper {
                 x.getDescription(),
                 x.getCategory(),
                 x.getStoreLocation()));
+
         System.out.println("How to:");
         System.out.println("[ID][+] to increase by one");
         System.out.println("[ID][-] to decrease by one");
         System.out.println("[ID][+][qty] to increase quantity of a product");
         System.out.println("[ID][-][qty] to decrease quantity of a product");
         System.out.println("[ID][!] to remove product from Cart");
+        System.out.println("[*] to clear Cart");
         System.out.printf("[%s] - %s\n", "q", "Back to prev menu");
         System.out.print("Choose your option: ");
     }
