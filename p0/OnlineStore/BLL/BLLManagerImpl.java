@@ -89,6 +89,32 @@ public class BLLManagerImpl implements IBLLManager {
         ArrayList<Cart> carts = new CartDaoImpl().getRecordsFromCart(userId);
         return carts;
     }
+
+    @Override
+    public void processDeleteRecordFromCart(int userId, int cartId) {
+        new CartDaoImpl().deleteProductFromCart(userId, cartId);
+    }
+
+    @Override
+    public void processDeleteCart(int userId) {
+        new CartDaoImpl().deleteCart(userId);
+    }
+
+    @Override
+    public CommandWord processUpdateRecordInCart(int userId, int cartId, int quantity, CommandWord command) {
+        switch (command){
+            case INCREASE_SINGLAR:
+               return new CartDaoImpl().increaseQuantityInRecordByOne(userId, cartId);
+            case DECREASE_SINGLAR:
+               return new CartDaoImpl().decreaseQuantityInRecordByOne(userId, cartId);
+            case INCREASE_PLURAL:
+               return new CartDaoImpl().increaseQuantityInRecordByMany(userId, cartId, quantity);
+            case DECREASE_PLURAL:
+               return new CartDaoImpl().decreaseQuantityInRecordByMany(userId,cartId,quantity);
+            default:
+                return CommandWord.FAILURE;
+        }
+    }
 }
 
 

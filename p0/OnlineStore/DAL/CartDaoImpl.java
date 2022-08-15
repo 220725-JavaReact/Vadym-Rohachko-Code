@@ -4,8 +4,8 @@ import Interfaces.ICartDao;
 import Models.Cart;
 import Models.Product;
 import Util.ConnectionFactory;
-import DAL.*;
 import Models.*;
+import Enum.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,6 +24,147 @@ public class CartDaoImpl implements ICartDao {
     private String query = query1 + query2 + query3 + query4 + query5 + query6 + query7;
 
     @Override
+    public CommandWord increaseQuantityInRecordByOne(int userId, int cartId) {
+        try {
+            int quantity = new CartDaoImpl().getSingleRecordFromCart(cartId).getQuantity();
+            quantity += 1;
+            Connection conn = ConnectionFactory.getInstance().getConnection();
+            String query = "update carts set quantity = ? where cart_id = ? and user_id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, quantity);
+            pstmt.setInt(2, cartId);
+            pstmt.setInt(3, userId);
+            int count = pstmt.executeUpdate();
+            if (count > 0) {
+                return CommandWord.UPDATE;
+            } else {
+                return CommandWord.FAILURE;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return CommandWord.FAILURE;
+        }
+    }
+
+    @Override
+    public CommandWord decreaseQuantityInRecordByOne(int userId, int cartId) {
+        try {
+            int quantity = new CartDaoImpl().getSingleRecordFromCart(cartId).getQuantity();
+            if (quantity > 0) {
+                quantity -= 1;
+                if (quantity == 0) {
+                    new CartDaoImpl().deleteProductFromCart(userId, cartId);
+                    return CommandWord.UPDATE;
+                }
+            } else {
+                return CommandWord.FAILURE;
+            }
+            Connection conn = ConnectionFactory.getInstance().getConnection();
+            String query = "update carts set quantity = ? where cart_id = ? and user_id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, quantity);
+            pstmt.setInt(2, cartId);
+            pstmt.setInt(3, userId);
+            int count = pstmt.executeUpdate();
+            if (count > 0) {
+                return CommandWord.UPDATE;
+            } else {
+                return CommandWord.FAILURE;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return CommandWord.FAILURE;
+        }
+    }
+
+    @Override
+    public CommandWord increaseQuantityInRecordByMany(int userId, int cartId, int qty) {
+        try {
+            int quantity = new CartDaoImpl().getSingleRecordFromCart(cartId).getQuantity();
+            quantity += qty;
+            Connection conn = ConnectionFactory.getInstance().getConnection();
+            String query = "update carts set quantity = ? where cart_id = ? and user_id = ?;";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, quantity);
+            pstmt.setInt(2, cartId);
+            pstmt.setInt(3, userId);
+            int count = pstmt.executeUpdate();
+            if (count > 0) {
+                return CommandWord.UPDATE;
+            } else {
+                return CommandWord.FAILURE;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return CommandWord.FAILURE;
+        }
+    }
+
+    @Override
+    public CommandWord decreaseQuantityInRecordByMany(int userId, int cartId, int qty) {
+        try {
+            int quantity = new CartDaoImpl().getSingleRecordFromCart(cartId).getQuantity();
+            if (quantity - qty > 0) {
+                quantity -= qty;
+            } else if (quantity - qty == 0) {
+                new CartDaoImpl().deleteProductFromCart(userId, cartId);
+                return CommandWord.UPDATE;
+            } else {
+                return CommandWord.FAILURE_DUE_TO_HIGH_AMOUNT;
+            }
+            Connection conn = ConnectionFactory.getInstance().getConnection();
+            String query = "update carts set quantity = ? where cart_id = ? and user_id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, quantity);
+            pstmt.setInt(2, cartId);
+            pstmt.setInt(3, userId);
+            int count = pstmt.executeUpdate();
+            if (count > 0) {
+                return CommandWord.UPDATE;
+            } else {
+                return CommandWord.FAILURE;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return CommandWord.FAILURE;
+        }
+    }
+
+    @Override
+    public void deleteProductFromCart(int userId, int cartId) {
+        try {
+            Connection conn = ConnectionFactory.getInstance().getConnection();
+            String query = "delete from carts where user_id = ? and cart_id = ?;";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, userId);
+            pstmt.setInt(2, cartId);
+            int counter = pstmt.executeUpdate();
+            if (counter == 1) {
+                //System.out.println("Deleted one record.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteCart(int userId) {
+        try {
+            Connection conn = ConnectionFactory.getInstance().getConnection();
+            String query = "delete from carts where user_id = ?;";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, userId);
+            int counter = pstmt.executeUpdate();
+            if (counter == 1) {
+                //System.out.println("Deleted one record.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
     public ArrayList<Cart> getRecordsFromCart(int userId) {
         try {
             Connection conn = ConnectionFactory.getInstance().getConnection();
@@ -32,11 +173,29 @@ public class CartDaoImpl implements ICartDao {
             pstmt.setInt(1, userId);
             ResultSet rs = pstmt.executeQuery();
             ArrayList<Cart> carts = new ArrayList<>();
-            while(rs.next()){
-                Cart cart =   extractCartFromResultSet(rs);
+            while (rs.next()) {
+                Cart cart = extractCartFromResultSet(rs);
                 carts.add(cart);
             }
             return carts;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Cart getSingleRecordFromCart(int cartId) {
+        try {
+            Connection conn = ConnectionFactory.getInstance().getConnection();
+            String query = "select * from carts where cart_id = ?;";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, cartId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                Cart cartFull = extractCartFromResultSet(rs);
+                return cartFull;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,8 +212,8 @@ public class CartDaoImpl implements ICartDao {
             pstmt.setInt(2, cart.getStoreId());
             pstmt.setInt(3, cart.getProductId());
             ResultSet rs = pstmt.executeQuery();
-            if(rs.next()){
-                Cart cartFull =  extractCartFromResultSet(rs);
+            if (rs.next()) {
+                Cart cartFull = extractCartFromResultSet(rs);
                 return cartFull;
             }
         } catch (Exception e) {
@@ -110,7 +269,6 @@ public class CartDaoImpl implements ICartDao {
             e.printStackTrace();
         }
     }
-
 
 
     private Cart extractCartFromResultSet(ResultSet rs) throws SQLException {

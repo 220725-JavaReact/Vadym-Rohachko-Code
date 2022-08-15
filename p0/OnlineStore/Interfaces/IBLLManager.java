@@ -32,5 +32,9 @@ public interface IBLLManager {
 
     ArrayList<Cart> processRecordsFromCartByUserId(int userId);
 
+    void processDeleteRecordFromCart(int userId, int cartId);
+    void processDeleteCart(int userId);
+
+    CommandWord processUpdateRecordInCart(int userId, int cartId, int quantity, CommandWord command);
 }
 
