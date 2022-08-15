@@ -86,7 +86,8 @@ public class BLLManagerImpl implements IBLLManager {
 
     @Override
     public ArrayList<Cart> processRecordsFromCartByUserId(int userId) {
-        return null;
+        ArrayList<Cart> carts = new CartDaoImpl().getRecordsFromCart(userId);
+        return carts;
     }
 }
 

@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Helper {
+
     public static void displayArchive(int userId, IArchiveDao.SortingType type) {
         try {
             ArrayList<Archive> archives =
@@ -51,7 +52,7 @@ public class Helper {
     public static boolean archiveSortAndDisplay(boolean isExit, int userId, String[] menuSortingOptions) {
         Scanner scanner = new Scanner(System.in);
         while (!isExit) {
-            MenuHelper.displayMenu(menuSortingOptions, "\nSort Archive by:");
+            MenuHelper.displayMenu(menuSortingOptions, "\nSort Archive by:", "");
             String userInput = scanner.nextLine();
             switch (userInput) {
                 case "1":
@@ -98,6 +99,18 @@ public class Helper {
         try {
             int result = Integer.valueOf(userInput);
             return result > 0 ? userInput : "0";
+        } catch (NumberFormatException e) {
+            return "-1";
+        }
+    }
+
+    public static String interpretUserInput(String userInput) {
+        if (userInput.equals("q")) {
+            return "0";
+        }
+        try {
+            int result = Integer.valueOf(userInput);
+            return result > 0 ? userInput : "-1";
         } catch (NumberFormatException e) {
             return "-1";
         }

@@ -23,6 +23,25 @@ public class CartDaoImpl implements ICartDao {
     private String query7 = "on stores.store_id = inventories.store_id ";
     private String query = query1 + query2 + query3 + query4 + query5 + query6 + query7;
 
+    @Override
+    public ArrayList<Cart> getRecordsFromCart(int userId) {
+        try {
+            Connection conn = ConnectionFactory.getInstance().getConnection();
+            String query = "select * from carts where user_id = ?;";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+            ArrayList<Cart> carts = new ArrayList<>();
+            while(rs.next()){
+                Cart cart =   extractCartFromResultSet(rs);
+                carts.add(cart);
+            }
+            return carts;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public Cart getSingleRecordFromCart(Cart cart) {
