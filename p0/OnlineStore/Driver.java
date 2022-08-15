@@ -21,7 +21,7 @@ public class Driver {
 
         while (!exit) {
             //Message.welcomeToStore();
-            MenuHelper.displayMenu(welcomeScreenOptions, "Welcome to the Store!");
+            MenuHelper.displayMenu(welcomeScreenOptions, "Welcome to the Store!", "");
             userInput = scanner.nextLine();
             switch (userInput) {
                 case "1":

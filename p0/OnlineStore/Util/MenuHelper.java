@@ -2,6 +2,7 @@ package Util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -10,9 +11,9 @@ import BLL.BLLManagerImpl;
 import Models.*;
 
 public class MenuHelper {
-    public static void displayMenu(String[] menu, String... header) {
+    public static void displayMenu(String[] menu, String header, String footer) {
         //Header for the menu if needed
-        if (!header.equals("")) System.out.println((String) header[0]);
+        if (!header.equals("")) System.out.println(header);
         //Menu with dynamic numbering
         for (int i = 0; i < menu.length; i++) {
             if (i == menu.length - 1) {
@@ -21,16 +22,8 @@ public class MenuHelper {
                 System.out.printf("[%d] - %s\n", i + 1, menu[i]);
             }
         }
-        System.out.printf("Choose your option: ");
-    }
-
-    //dynamic menu with its own numbering
-    public static void displayMenu(HashMap menu) {
-        ArrayList<Integer> listOfKeys = new ArrayList<Integer>(menu.keySet());
-        for (int i = 0; i < listOfKeys.size(); i++) {
-            System.out.printf("[%d] - %s\n", listOfKeys.get(i), menu.get(listOfKeys.get(i)));
-        }
-        System.out.printf("[%s] - %s\n", "q", "Back to prev menu");
+        //footer for the menu if needed
+        if (!footer.equals("")) System.out.println(header);
         System.out.printf("Choose your option: ");
     }
 
@@ -40,6 +33,37 @@ public class MenuHelper {
         stores.stream().forEach(x -> System.out.printf("[%d] - %s\n", x.getStoreId(), x.getStoreLocation()));
         System.out.printf("[%s] - %s\n", "q", "Back to prev menu");
         System.out.println("Choose your option: ");
+    }
+
+    public static void displayCartRecords(ArrayList<Cart> carts) {
+        System.out.println("List of available records in cart:");
+        System.out.println("[ID]");
+        carts.stream().forEach(x -> System.out.printf("" +
+                        "[%d]  " +
+                        "|qty %d|" +
+                        "\t|price $%.2f|" +
+                        "\t|total price $%.2f|" +
+                        "\t|tittle: %s|" +
+                        "\t|description: %s|" +
+                        "\t|category: %s|" +
+                        "\t|store at %s|" +
+                        "\n",
+                x.getCartId(),
+                x.getQuantity(),
+                x.getPricePerItem(),
+                (x.getPricePerItem().multiply(new BigDecimal(x.getQuantity()))),
+                x.getProductName(),
+                x.getDescription(),
+                x.getCategory(),
+                x.getStoreLocation()));
+        System.out.println("How to:");
+        System.out.println("[ID][+] to increase by one");
+        System.out.println("[ID][-] to decrease by one");
+        System.out.println("[ID][+][qty] to increase quantity of a product");
+        System.out.println("[ID][-][qty] to decrease quantity of a product");
+        System.out.println("[ID][!] to remove product from Cart");
+        System.out.printf("[%s] - %s\n", "q", "Back to prev menu");
+        System.out.print("Choose your option: ");
     }
 
     public static void displayProducts(ArrayList<Product> products, int storeId) {
