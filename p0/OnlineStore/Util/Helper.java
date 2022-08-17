@@ -22,22 +22,35 @@ public class Helper {
             }
 
             for (Archive archive : archives) {
+//                DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+//                System.out.println("Store ID    " + archive.getStoreId());
+//                System.out.println("Order ID    " + archive.getOrderId());
+//                System.out.println("Category ID " + archive.getCategoryId());
+//                System.out.println("Created:    " + archive.getOrderCreatedAt().toLocalDateTime().format(myFormatObj));
+//                System.out.println("Product     " + archive.getProductName());
+//                System.out.println("Description " + archive.getDescription());
+//                System.out.println("Category    " + archive.getCategory());
+//                System.out.println("Quantity    " + archive.getQuantity());
+//                System.out.println("Price       " + archive.getPricePerItem());
+//                System.out.println("Total price " + archive.getPriceTotal());
+//                System.out.println("Store at    " + archive.getStoreLocation());
+//                System.out.println(getDelimiter(20));
                 DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-                System.out.println("Store ID    " + archive.getStoreId());
-                System.out.println("Order ID    " + archive.getOrderId());
-                System.out.println("Category ID " + archive.getCategoryId());
-                System.out.println("Created:    " + archive.getOrderCreatedAt().toLocalDateTime().format(myFormatObj));
-                System.out.println("Product     " + archive.getProductName());
-                System.out.println("Description " + archive.getDescription());
-                System.out.println("Category    " + archive.getCategory());
-                System.out.println("Quantity    " + archive.getQuantity());
-                System.out.println("Price       " + archive.getPricePerItem());
-                System.out.println("Total price " + archive.getPriceTotal());
-                System.out.println("Store at    " + archive.getStoreLocation());
+                System.out.print("Created: " + archive.getOrderCreatedAt().toLocalDateTime().format(myFormatObj));
+                System.out.print(" Order ID:[" + archive.getOrderId() + "]");
+                System.out.print(" Category ID:[" + archive.getCategoryId() +"]");
+                System.out.print(" Store ID:[" + archive.getStoreId() + "]");
+                System.out.print(" Quantity:[" + archive.getQuantity() + "]");
+                System.out.print(" Price:$" + archive.getPricePerItem());
+                System.out.println(" Total price:$" + archive.getPriceTotal());
+                System.out.print("Product: " + archive.getProductName());
+                System.out.print(" Description: " + archive.getDescription());
+                System.out.print(" Category: " + archive.getCategory());
+                System.out.println(" Location: " + archive.getStoreLocation());
                 System.out.println(getDelimiter(20));
             }
         } catch (NullPointerException e) {
-            System.out.println("Failed to get records from Archive");
+            System.out.println("Failed to get records from Archive\n");
         }
     }
 
@@ -51,6 +64,14 @@ public class Helper {
 
     public static boolean archiveSortAndDisplay(boolean isExit, int userId, String[] menuSortingOptions) {
         Scanner scanner = new Scanner(System.in);
+        ArrayList<Archive> archives =
+                new BLLManagerImpl().processArchivesByUserId(userId, IArchiveDao.SortingType.order);
+
+        if (archives.size() == 0) {
+            System.out.println("You have no records in archive for the moment.\n");
+            isExit = true;
+        }
+
         while (!isExit) {
             MenuHelper.displayMenu(menuSortingOptions, "\nSort Archive by:", "");
             String userInput = scanner.nextLine();
@@ -87,11 +108,7 @@ public class Helper {
         return Pattern.compile(regex).matcher(email).matches();
     }
 
-    //check if user entered valid data
-    //return "q" to quit
-    //return "0" if input is negative
-    //return "-1" if NumberFormatException caught
-    //return userInput if input is valid (it is an int and is more than 0)
+
     public static String validateUserInput(String userInput) {
         if (userInput.equals("q")) {
             return "q";

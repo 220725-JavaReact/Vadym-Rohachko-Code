@@ -96,11 +96,12 @@ public class MenuHelper {
         System.out.println("List of available products:");
         //List<Integer> collect = stores.stream().map(x -> x.getStoreId()).collect(Collectors.toList());
         products.stream().
-                forEach(product -> System.out.printf("[%d] - %s\t%s\t%s\n",
+                forEach(product -> System.out.printf("[%d] - %s\t%s\t$%.2f\tqty %d\n",
                         product.getProductId(),
                         product.getProductName(),
                         product.getDescription(),
-                        product.getPrice()));
+                        product.getPrice(),
+                        product.getQuantity()));
         System.out.printf("[%s] - %s\n", "q", "Back to prev menu");
         System.out.println("Choose your option: ");
     }

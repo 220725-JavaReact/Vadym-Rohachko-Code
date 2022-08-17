@@ -58,8 +58,8 @@ public class MainMenuManager {
                     System.out.println("Sorry for inconvenience...");
                 } else if (Integer.valueOf(quantityOfProduct) > product.getQuantity()) {
                     System.out.println("Failed to add to Shopping Cart");
-                    System.out.println("You requested " + quantityOfProduct + ",items we have only " + product.getQuantity());
-                    System.out.println("Request less quantity or order the product from another location.");
+                    System.out.println("You requested " + quantityOfProduct + " items but we have only " + product.getQuantity());
+                    System.out.println("Request less quantity or order from another location.");
                     System.out.println("Sorry for inconvenience...");
                 } else {
                     //collect cart for sql request to check if there is such a record in the Cart table
@@ -73,8 +73,6 @@ public class MainMenuManager {
                         new BLLManagerImpl().processSingleRecordFromCart(cart, CommandWord.INSER);
                         System.out.println("Product added to Cart!");
                     }
-                    //menu to go to  ?
-                    //processCart();
                 }
 
             }

@@ -29,7 +29,6 @@ public class CartMenu {
                 ArrayList<Cart> cartsToBePaid = PaymentMenu.processPayment(currentUserCart);
                 if (cartsToBePaid != null) {
                     //payment procedure
-                    //
                     ArrayList<Cart> cartsLeftAfterPayment = new BLLManagerImpl().processPayment(carts);
                     if (cartsLeftAfterPayment == null) {
                         System.out.println("Payment done!");
@@ -55,7 +54,7 @@ public class CartMenu {
                     if (result == CommandWord.UPDATE) {
                         System.out.println("Number of items was increased by one!");
                     } else {
-                        System.out.println("Failure! No changes were done to the record...");
+                        System.out.println("Wrong input! \nNo changes were applied.\n");
                     }
                 } else if (Regex.isReadyToDecreaseByOne(userCartRecordChoice)) {
                     String[] strings = userCartRecordChoice.split("-", -1);
