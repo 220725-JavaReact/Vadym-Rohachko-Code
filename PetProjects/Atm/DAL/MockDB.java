@@ -5,7 +5,6 @@ import Atm.Main.Models.Card;
 import java.util.ArrayList;
 
 public class MockDB {
-
     private static ArrayList<Card> setData(){
         ArrayList<Card> cards = new ArrayList<Card>();
         cards.add(new Card("1111222233334444", 1111, "John", "Brown", 150.22));

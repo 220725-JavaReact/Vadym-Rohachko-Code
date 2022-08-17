@@ -92,5 +92,4 @@ public class Card {
     void balance() {    	
         this.getBalance();
     }
-
 }
