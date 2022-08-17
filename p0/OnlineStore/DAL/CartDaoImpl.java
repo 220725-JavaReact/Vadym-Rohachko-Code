@@ -66,7 +66,7 @@ public class CartDaoImpl implements ICartDao {
                 return CommandWord.FAILURE;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return CommandWord.FAILURE;
         }
     }
@@ -97,7 +97,7 @@ public class CartDaoImpl implements ICartDao {
                 return CommandWord.FAILURE;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return CommandWord.FAILURE;
         }
     }
@@ -120,7 +120,7 @@ public class CartDaoImpl implements ICartDao {
                 return CommandWord.FAILURE;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return CommandWord.FAILURE;
         }
     }
@@ -128,7 +128,8 @@ public class CartDaoImpl implements ICartDao {
     @Override
     public CommandWord decreaseQuantityInRecordByMany(int userId, int cartId, int qty) {
         try {
-            int quantity = new CartDaoImpl().getSingleRecordFromCart(cartId).getQuantity();
+            Cart locatCart = new CartDaoImpl().getSingleRecordFromCart(cartId);
+            int quantity = locatCart.getQuantity();
             if (quantity - qty > 0) {
                 quantity -= qty;
             } else if (quantity - qty == 0) {
@@ -150,7 +151,7 @@ public class CartDaoImpl implements ICartDao {
                 return CommandWord.FAILURE;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return CommandWord.FAILURE;
         }
     }
@@ -169,7 +170,7 @@ public class CartDaoImpl implements ICartDao {
                 //System.out.println("Deleted one record.");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
@@ -185,7 +186,7 @@ public class CartDaoImpl implements ICartDao {
                 //System.out.println("Deleted one record.");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
@@ -205,7 +206,7 @@ public class CartDaoImpl implements ICartDao {
             }
             return carts;
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return null;
     }
@@ -223,7 +224,7 @@ public class CartDaoImpl implements ICartDao {
                 return cartFull;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return null;
     }
@@ -243,7 +244,7 @@ public class CartDaoImpl implements ICartDao {
                 return cartFull;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return null;
     }
@@ -272,7 +273,7 @@ public class CartDaoImpl implements ICartDao {
             pstmt.setDouble(12, product.getPrice());
             int count = pstmt.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
@@ -292,7 +293,7 @@ public class CartDaoImpl implements ICartDao {
             pstmt.close();
             System.out.println("Updated " + affectedrows + " rows!");
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
