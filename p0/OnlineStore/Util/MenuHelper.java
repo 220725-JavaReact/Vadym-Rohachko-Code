@@ -27,6 +27,22 @@ public class MenuHelper {
         System.out.printf("Choose your option: ");
     }
 
+    public static void displayMenu2(String[] menu, String header, String footer) {
+        //Header for the menu if needed
+        if (!header.equals("")) System.out.println(header);
+        //Menu with dynamic numbering
+        for (int i = 0; i < menu.length; i++) {
+            System.out.printf("[%d] - %s\n", i + 1, menu[i]);
+        }
+        //footer for the menu if needed
+        if (!footer.equals("")) System.out.println(header);
+        {
+            System.out.println("[q] - Back to prev menu");
+            System.out.println("Choose your option: ");
+        }
+
+    }
+
     public static void displayMenu(ArrayList<Store> stores) {
         System.out.println("\nList of available stores:");
         //List<Integer> collect = stores.stream().map(x -> x.getStoreId()).collect(Collectors.toList());
@@ -70,6 +86,7 @@ public class MenuHelper {
         System.out.println("[ID][!] to remove product from Cart");
         System.out.println("[*] to clear Cart");
         System.out.printf("[%s] - %s\n", "q", "Back to prev menu");
+        System.out.printf("[%s] - %s\n", "p", "Go to payment");
         System.out.print("Choose your option: ");
     }
 

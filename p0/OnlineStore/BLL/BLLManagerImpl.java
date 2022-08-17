@@ -115,6 +115,11 @@ public class BLLManagerImpl implements IBLLManager {
                 return CommandWord.FAILURE;
         }
     }
+
+    @Override
+    public ArrayList<Cart> processPayment(ArrayList<Cart> carts) {
+        return new CartDaoImpl().processPayment(carts);
+    }
 }
 
 

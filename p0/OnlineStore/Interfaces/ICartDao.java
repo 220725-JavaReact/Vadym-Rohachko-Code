@@ -17,4 +17,5 @@ public interface ICartDao {
     CommandWord decreaseQuantityInRecordByOne(int userId, int cartId);
     CommandWord increaseQuantityInRecordByMany(int userId, int cartId, int qty);
     CommandWord decreaseQuantityInRecordByMany(int userId, int cartId, int qty);
+    ArrayList<Cart> processPayment(ArrayList<Cart> carts);
 }

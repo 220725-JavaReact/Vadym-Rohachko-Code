@@ -27,7 +27,6 @@ public class MenuLogin {
                 Message.wrongEmailFormat();
             } else {
                 login.setLogin(userInput);
-                //use break and leave exit quale to "false" to pass to the next while loop
                 break;
             }
         }

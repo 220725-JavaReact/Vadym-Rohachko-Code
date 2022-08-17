@@ -36,5 +36,7 @@ public interface IBLLManager {
     void processDeleteCart(int userId);
 
     CommandWord processUpdateRecordInCart(int userId, int cartId, int quantity, CommandWord command);
+
+    ArrayList<Cart> processPayment(ArrayList<Cart> carts);
 }
 
