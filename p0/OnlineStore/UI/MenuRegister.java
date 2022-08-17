@@ -108,25 +108,6 @@ public class MenuRegister {
             }
         }
 
-
-//        while (!exit) {
-//            //set user address
-//            Message.moveToPrevMenu();
-//            Message.enterAddress();
-//            userInput = scanner.nextLine();
-//            if (userInput.length() == 0) {
-//                Message.emptyInput();
-//            } else if (userInput.equals("q")) {
-//                exit = true;
-//                register = null;
-//            } else if (userInput.length() < 3) {
-//                Message.wrongInput();
-//            } else {
-//                register.setAddress(userInput);
-//                break;
-//            }
-//        }
-
         //check here against BD?
         if (register != null) {
             Logger logger = Logger.getInstance();

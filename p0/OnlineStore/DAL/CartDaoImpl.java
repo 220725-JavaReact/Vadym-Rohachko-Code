@@ -7,10 +7,7 @@ import Util.ConnectionFactory;
 import Models.*;
 import Enum.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class CartDaoImpl implements ICartDao {
@@ -22,6 +19,34 @@ public class CartDaoImpl implements ICartDao {
     private String query6 = "inner join stores ";
     private String query7 = "on stores.store_id = inventories.store_id ";
     private String query = query1 + query2 + query3 + query4 + query5 + query6 + query7;
+
+    //    @Modifying
+//    @Transaction
+    @Override
+    public ArrayList<Cart> processPayment(ArrayList<Cart> carts) {
+        Cart cart = carts.stream().findFirst().orElse(null);
+        int userId = cart.getUserId();
+
+        try {
+            String query = "Select processPayment(?)";
+            Connection conn = ConnectionFactory.getInstance().getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, userId);
+            //org.postgresql.util.PSQLException: A result was returned when none was expected.
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            //e.printStackTrace();
+            ArrayList<Cart> cartsNew = new CartDaoImpl().getRecordsFromCart(userId);
+            if (cartsNew.size() > 0) {
+                System.out.println("Payment failed!");
+                return cartsNew;
+            } else {
+                System.out.println("Payment confirmed!");
+                return null;
+            }
+        }
+        return null;
+    }
 
     @Override
     public CommandWord increaseQuantityInRecordByOne(int userId, int cartId) {
@@ -129,6 +154,7 @@ public class CartDaoImpl implements ICartDao {
             return CommandWord.FAILURE;
         }
     }
+
 
     @Override
     public void deleteProductFromCart(int userId, int cartId) {
