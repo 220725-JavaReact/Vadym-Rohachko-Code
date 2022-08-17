@@ -90,20 +90,37 @@ public class MenuHelper {
         System.out.print("Choose your option: ");
     }
 
-    public static void displayProducts(ArrayList<Product> products, int storeId) {
-        Store store = new BLLManagerImpl().processStoreById(storeId);
-        System.out.printf("\nYou are shopping at %s\n", store.getStoreLocation());
-        System.out.println("List of available products:");
-        //List<Integer> collect = stores.stream().map(x -> x.getStoreId()).collect(Collectors.toList());
-        products.stream().
-                forEach(product -> System.out.printf("[%d] - %s\t%s\t$%.2f\tqty %d\n",
-                        product.getProductId(),
-                        product.getProductName(),
-                        product.getDescription(),
-                        product.getPrice(),
-                        product.getQuantity()));
-        System.out.printf("[%s] - %s\n", "q", "Back to prev menu");
-        System.out.println("Choose your option: ");
-    }
+//    public static void displayProducts(ArrayList<Product> products, int storeId) {
+//        Store store = new BLLManagerImpl().processStoreById(storeId);
+//        System.out.printf("\nYou are shopping at %s\n", store.getStoreLocation());
+//        System.out.println("List of available products:");
+//        //List<Integer> collect = stores.stream().map(x -> x.getStoreId()).collect(Collectors.toList());
+//        products.stream().
+//                forEach(product -> System.out.printf("[%d] - %s\t%s\t$%.2f\tqty %d\n",
+//                        product.getProductId(),
+//                        product.getProductName(),
+//                        product.getDescription(),
+//                        product.getPrice(),
+//                        product.getQuantity()
+//                ));
+//        System.out.printf("[%s] - %s\n", "q", "Back to prev menu");
+//        System.out.println("Choose your option: ");
+//    }
+public static void displayProducts(ArrayList<Product> products, int storeId) {
+    Store store = new BLLManagerImpl().processStoreById(storeId);
+    System.out.printf("\nYou are shopping at %s\n", store.getStoreLocation());
+    System.out.println("List of available products:");
+    //List<Integer> collect = stores.stream().map(x -> x.getStoreId()).collect(Collectors.toList());
+    products.stream().
+            forEach(product -> System.out.printf("[%d] - %s\t%s\t$%.2f\n",
+                    product.getProductId(),
+                    product.getProductName(),
+                    product.getDescription(),
+                    product.getPrice()
+                   // product.getQuantity()
+            ));
+    System.out.printf("[%s] - %s\n", "q", "Back to prev menu");
+    System.out.println("Choose your option: ");
+}
 }
 
