@@ -1,5 +1,3 @@
-package Atm.Main;
-
 import Atm.Main.BLL.Atm;
 
 public class Driver {
