@@ -1,8 +1,11 @@
-package Atm.Main.Models;
+package Atm.Models;
 
 import java.util.Scanner;
 
 public class Card {
+    public Card() {
+    }
+
     private int pin;
     private String firstName;
     private String lastName;
@@ -43,7 +46,6 @@ public class Card {
     }
 
     public double getBalance() {
-    	//System.out.println("Balanc()");
         return balance;
     }
 
@@ -61,36 +63,33 @@ public class Card {
         this.balance = balance;
     }
 
-    public void deposit() {
+    public void deposit(double deposit) {
         try {
-            System.out.println("How much $$ would you like to deposit?");
-            double deposit = Double.parseDouble(scanner.nextLine());
             this.balance += deposit;
-            System.out.println("Thank you for your $$. Your new balance is: " + this.getBalance());
         } catch (Exception e) {
-            System.out.println("Wrong input! Try again...");
+            e.printStackTrace();
         }
     }
 
-    public void withdraw() {
+    public boolean withdraw(double withdrawal) {
         try {
-            System.out.println("How much $$ would you like to withdraw: ");
-            double withdrawal = Double.parseDouble(scanner.nextLine());
             //check if the user has enough money
             if (this.getBalance() < withdrawal) {
-                System.out.println("Insufficient balance :(");
+                return false;
             } else {
                 this.setBalance(this.getBalance() - withdrawal);
-                System.out.println("$$ was withdrawn. Your new balance is: " + this.getBalance());
+                return true;
             }
         } catch (Exception e) {
-            System.out.println("Wrong input! Try again...");
+            e.printStackTrace();
         }
-
+        return false;
     }
 
-    void balance() {    	
+    void balance() {
         this.getBalance();
     }
+
+
 
 }

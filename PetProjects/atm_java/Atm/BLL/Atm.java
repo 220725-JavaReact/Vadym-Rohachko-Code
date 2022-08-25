@@ -1,10 +1,12 @@
-package Atm.Main.BLL;
+package Atm.BLL;
 
-import Atm.Main.DAL.MockDB;
-import Atm.Main.Menu.Menu;
-import Atm.Main.Models.Card;
-import Atm.Main.Util.Logger;
+import Atm.DAL.MockDB;
+import Atm.Menu.Menu;
+import Atm.Models.Card;
+import Atm.Util.Logger;
+
 import java.util.Scanner;
+//import java.util.logging.Logger;
 
 public class Atm {
     public void manager() {
@@ -38,9 +40,19 @@ public class Atm {
                             System.out.println();
                             break;
                         } else if (custChoice.equals("1")) {
-                            card.deposit();
+                            System.out.println("How much $$ would you like to deposit?");
+                            double userInput = Double.parseDouble(scanner.nextLine());
+                            card.deposit(userInput);
+                            System.out.println("Thank you for your $$.");
                         } else if (custChoice.equals("2")) {
-                            card.withdraw();
+                            System.out.println("How much $$ would you like to withdraw: ");
+                           double userInput =  Double.parseDouble(scanner.nextLine());
+                           boolean result = card.withdraw(userInput);
+                            if (result) {
+                                System.out.println("Withdrawn successfully!");
+                            } else {
+                                System.out.println("Insufficient balance :(");
+                            }
                         } else if (custChoice.equals("3")) {
                             System.out.println("Your current balance is " + card.getBalance() + "\n");
                         }

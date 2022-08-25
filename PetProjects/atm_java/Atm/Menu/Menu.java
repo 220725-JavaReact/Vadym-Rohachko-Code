@@ -1,4 +1,4 @@
-package Atm.Main.Menu;
+package Atm.Menu;
 
 public class Menu {
     public static void printMainMenu()

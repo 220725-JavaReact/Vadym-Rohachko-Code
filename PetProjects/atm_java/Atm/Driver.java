@@ -1,6 +1,7 @@
-package Atm.Main;
+package Atm;
 
-import Atm.Main.BLL.Atm;
+import Atm.BLL.Atm;
+
 
 public class Driver {
     public static void main(String[] args) {

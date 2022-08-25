@@ -1,4 +1,4 @@
-package Atm.Main.Util;
+package Atm.Util;
 
 
 import java.io.FileWriter;

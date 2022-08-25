@@ -1,6 +1,6 @@
-package Atm.Main.DAL;
+package Atm.DAL;
 
-import Atm.Main.Models.Card;
+import Atm.Models.Card;
 
 import java.util.ArrayList;
 
