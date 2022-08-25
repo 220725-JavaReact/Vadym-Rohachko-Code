@@ -39,5 +39,5 @@ public class word {
 	public void setWordName(String wordName) {
 		this.wordName = wordName;
 	}
+	
 }
-
