@@ -84,3 +84,26 @@ public class wordDAO implements DAO<word> {
 	public void truncateTable() {
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
