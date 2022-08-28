@@ -27,7 +27,7 @@ private static ConnectionFactory connectionFactory;
 		Connection connie = null;
 		try {
 			connie = 
-					DriverManager.getConnection(SecretClass.url, SecretClass.un, SecretClass.pw);			
+					DriverManager.getConnection(SecretClass.url, SecretClass.user, SecretClass.pass);			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
