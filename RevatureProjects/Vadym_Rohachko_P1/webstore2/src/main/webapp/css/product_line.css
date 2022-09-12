@@ -1,0 +1,156 @@
+.content-section {
+	/*display: flex;	
+	margin: auto;
+	height: 100%;
+	backgroundcolor: lightgrey;*/
+}
+
+.wrapper-line {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	margin-bottom: 10px;
+	gap: 10px 15px;
+}
+    
+.wrapper-line__text-panel {
+  	display: flex;
+  	flex-flow: row nowrap;
+  	justify-content: flex-end;
+  	gap: 10px 15px;
+  	width: 50%;
+}
+
+.wrapper-line__control-panel {
+	display: flex;
+  	flex-flow: row nowrap;
+  	justify-content: flex-start;
+  	gap: 10px 15px;
+  	width: 20%;
+}
+
+.wrapper-line__grand-total {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content:  flex-end;
+}
+
+.wrapper-line__grand-total_text {
+  	margin-right: 16%;
+}
+
+
+
+/*empty line*/
+.wrapper-line__nextline {
+    display: inline;
+}
+.wrapper-line__nextline:before {
+    content: "\a ";
+    white-space: pre;
+}
+/*end empty line*/
+
+.wrapper-line__product,
+.wrapper-line__category,
+.wrapper-line__manufacturer,
+.wrapper-line__price,
+.wrapper-line__data-change,
+.wrapper-line__quantity,
+.wrapper-line__total
+ {
+    margin:0;
+    padding:0;  
+}
+
+.wrapper-line__product,
+.wrapper-line__category,
+.wrapper-line__manufacturer,
+.wrapper-line__price,
+.wrapper-line__quantity,
+.wrapper-line__total{
+	width: 30%;
+}
+
+.wrapper-line__data-change {
+	width: 10%;
+}
+
+.wrapper-line__product {
+}
+
+.wrapper-line__category {
+}
+
+.wrapper-line__manufacturer {
+}
+
+.wrapper-line__price {	
+}
+
+.wrapper-line__data-change_color_red:hover {
+	background-color: red;
+}
+
+.wrapper-line__data-change_color_green:hover {
+	background: #1abc9c;
+}
+
+.wrapper-line__quantity {
+	text-align: center;
+	width: 5px;
+}
+
+.wrapper-line__total {
+}
+
+.wrapper-line_header {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-weight: 900;
+}
+
+.wrapper-line_width_50 {
+	width: 50%;
+}
+
+.wrapper-line_width_40 {
+	width: 40%;
+}
+.wrapper-line_width_20 {
+	width: 20%;
+}
+
+.wrapper-line__data-change {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 1px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 1px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+@media screen and (max-width: 1100px) {
+	.wrapper-line__text-panel {
+  		width: 60%;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.wrapper-line__text-panel {
+  		width: 65%;
+	}
+	
+	.wrapper-line__control-panel {
+		width: 30%;
+		
+	}
+	
+}
+
+
+
