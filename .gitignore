@@ -1,3 +1,5 @@
+*.properties
+
 onlinestore.log
 
 target/
