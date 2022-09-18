@@ -152,7 +152,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="webstore2" path="/webstore2" reloadable="true" source="org.eclipse.jst.j2ee.server:webstore2"/><Context docBase="sb_1" path="/sb_1" reloadable="true" source="org.eclipse.jst.jee.server:sb_1"/><Context docBase="BullsCows" path="/webstore" reloadable="true" source="org.eclipse.jst.j2ee.server:BullsCows"/></Host>
+      <Context docBase="sb_1" path="/sb_1" reloadable="true" source="org.eclipse.jst.jee.server:sb_1"/><Context docBase="webstore2" path="/webstore2" reloadable="true" source="org.eclipse.jst.j2ee.server:webstore2"/><Context docBase="webapp4" path="/webapp4" reloadable="true" source="org.eclipse.jst.jee.server:webapp4"/><Context docBase="KingsOfCode-MemoryMatch" path="/KingsOfCode-MemoryMatch" reloadable="true" source="org.eclipse.jst.jee.server:KingsOfCode-MemoryMatch"/></Host>
     </Engine>
   </Service>
 </Server>
