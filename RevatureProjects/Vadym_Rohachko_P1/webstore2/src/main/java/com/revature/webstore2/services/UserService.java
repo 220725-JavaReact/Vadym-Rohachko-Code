@@ -55,24 +55,25 @@ public class UserService {
 	
 	public User getCurrentUser() {
 		List<User> users = this.getAllUsers();
-//		Optional<User> userOptional = Optional.ofNullable(users.stream()
-//		// .peek(u -> System.out.println(u.getEmail()))
-//		.filter(u -> u.getCurrent() == true).findAny().orElse(null));
-//		//.filter(u -> u.getCurrent() == true).findFirst();
+		Optional<User> userOptional = Optional.ofNullable(users.stream()
+		// .peek(u -> System.out.println(u.getEmail()))
+		.filter(u -> u.getCurrent() == true).findAny().orElse(null));
+		//.filter(u -> u.getCurrent() == true).findFirst();
 		
-		User userTemp = new User();
-		for(User user : users) {
-			if(user.getCurrent() == true) {
-				userTemp = user;
-			}
-		}
+//		User userTemp = new User();
+//		for(User user : users) {
+//			if(user.getCurrent() == true) {
+//				userTemp = user;
+//			}
+//		}
 		
-//		if (userOptional.isEmpty()) {
-		if (!userTemp.getCurrent()) {
+		if (userOptional.isEmpty()) {
+//		if (!userTemp.getCurrent()) {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());		
 		return new User(0, "No user found", "", "", "", timestamp);
 	}	
-	return userTemp;
+	//return userTemp;
+		return userOptional.get();
 }
 	
 	public boolean isLoggedin() {
