@@ -32,15 +32,15 @@ public class CartService {
 
 	public List<Cart> getCartsByUserId(int userId) {
 		List<Cart> carts = this.getAllCarts();
-		// List<Cart> cartsById = carts.stream()
-		// .filter(cart -> cart.getUserId() == userId).collect(Collectors.toList());
-		List<Cart> cartsById = new ArrayList();
+		 List<Cart> cartsById = carts.stream()
+		 .filter(cart -> cart.getUserId() == userId).collect(Collectors.toList());
 		
-		for(Cart cart : carts) {
-			if(cart.getUserId() == userId) {
-				cartsById.add(cart);
-			}
-		}
+//		List<Cart> cartsById = new ArrayList();		
+//		for(Cart cart : carts) {
+//			if(cart.getUserId() == userId) {
+//				cartsById.add(cart);
+//			}
+//		}
 				
 		if (cartsById == null || cartsById.size() == 0) {
 			//Timestamp timestamp = new Timestamp(System.currentTimeMillis());
