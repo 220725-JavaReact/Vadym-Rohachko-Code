@@ -3,6 +3,7 @@ onlinestore.log
 SecretClass.*
 extras/
 target/
+node_modules/
 
 /.metadata/
 # Created by https://www.toptal.com/developers/gitignore/api/java,eclipse,windows
