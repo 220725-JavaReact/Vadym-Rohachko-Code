@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.revature.qc.utils.Logger;
 import com.revature.qc.dao.TaskDao;
 import com.revature.qc.models.Task;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/qc/tasks")
 public class TaskController {
@@ -25,11 +27,13 @@ public class TaskController {
 	@Autowired
 	private TaskDao taskDao;
 
+	
 	@GetMapping
 	public List<Task> getAllTasks() {
 		logger.log(Logger.LogLevel.info, "Get all tasks");
 		return this.taskDao.findAll();
 	}
+	
 	
 	@GetMapping("/{task_id}")
 	public Task getUserById(@PathVariable (value = "task_id") long taskId) {
@@ -40,12 +44,14 @@ public class TaskController {
 		return existingTask;
 	}
 	
+	
 	@PostMapping
 	public Task createUser(@RequestBody Task task) {	
 		Task newTask = this.taskDao.save(task);
 		logger.log(Logger.LogLevel.info, "Added task = " + newTask.toString());
 		return newTask;
 	}
+	
 	
 	@PutMapping("/{task_id}")
 	public Task updateTask(@RequestBody Task task, @PathVariable ("task_id") long taskId) {
@@ -57,6 +63,7 @@ public class TaskController {
 		return this.taskDao.save(existingTask);
 	}
 	
+	@CrossOrigin
 	@DeleteMapping("/{task_id}")
 	public ResponseEntity<Task> deleteUser(@PathVariable ("task_id") long taskId){
 	    Task existingTask = this.taskDao.findById(taskId)
